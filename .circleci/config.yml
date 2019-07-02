@@ -25,9 +25,9 @@ jobs:
       - run:
           name: Install AWS CLI
           command: |
-            sudo sed -i '/jessie-updates/d' /etc/apt/sources.list
-            sudo apt-get update
-            sudo apt-get install -y awscli
+            sed -i '/jessie-updates/d' /etc/apt/sources.list
+            apt-get update
+            apt-get install -y awscli
       - run:
           name: Push to S3 bucket
           command: cd public/ && aws --profile=eclisboa --region=us-east-2 s3 sync . s3://blog.hackbox.link
