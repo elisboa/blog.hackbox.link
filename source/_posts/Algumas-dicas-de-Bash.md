@@ -14,7 +14,7 @@ Neste curtíssimo artigo vamos explorar algumas dicas de produtividade que utili
 
 # Entrando pelo cano
 
-No mundo Unix, existe uma filosofia: um comando deve fazer apenas uma coisa; da melhor maneira possível. E como fazer quando precisamos de uma solução mais complexa que aquele comando não oferece? A solução é conectar comandos. Para isso, temos algumas opções, que vamos mostrar aqui bem rapidamente: o cano ou pipe simples e o duplo; os sinais de menor e maior; o "e" comercial, simples e duplo; e, por fim, o jogo-da-velha/sustenido/hashtag que eu carinhosamente chamo de "tralha": # - esse cara é demais e vai mudar tua vida, por isso será falado por último ; )
+No mundo Unix, existe uma filosofia: um comando deve fazer apenas uma coisa; da melhor maneira possível. E como fazer quando precisamos de uma solução mais complexa que aquele comando não oferece? A solução é conectar comandos. Para isso, temos algumas opções, que vamos mostrar aqui bem rapidamente: o cano ou pipe simples e o duplo; os sinais de menor e maior; o "e" comercial, simples e duplo; e, por fim, o jogo-da-velha/sustenido/hashtag que eu carinhosamente chamo de "tralha": `#` - esse cara é demais e vai mudar tua vida, por isso será falado por último ; )
 Suponhamos que precisamos filtrar a saída de um comando. O mais comum é:
 
 ```
@@ -28,7 +28,6 @@ A seguir temos um exemplo bem comum de como fazer isto:
 dmesg | grep mount
 ```
 Basicamente rodamos o comando `dmesg`, filtrando apenas as linhas que tenham a palavra "mount".
-
 
 ---
 
@@ -93,7 +92,7 @@ O comando acima vai jogar para o comando cat tudo o que for digitado até chegar
 ---
 
 ### Pausa para os comerciais
-Antes de continuarmos: este texto acabou ficando meio grande demais, então vou tentar ser mais conciso nas próximas dicas, porém sem perder a essência jamais. Pegue uma água, pratique o que já aprendeu e volte mais tarde ^_^
+Antes de continuarmos: este texto acabou ficando meio grande demais, então vou tentar ser mais conciso nas próximas dicas, porém sem perder a essência jamais. Pegue uma água, pratique o que já aprendeu e volte mais tarde `^_^`
 
 ---
 
@@ -160,7 +159,7 @@ cat /
 ```
 # Chegou a hora
 Se você aguentou até aqui, meus parabéns! #WeAreTheChampions
-Agora vamos falar da tralha/cerquilha/sustenido/_hashtag_. E vai ser bem rápido, prometo ^_^#
+Agora vamos falar da tralha/cerquilha/sustenido/_hashtag_. E vai ser bem rápido, prometo `^_^#`
 Quando escrevemos um _shell script_, é muito comum iniciarmos algumas linhas com este tão nobre caractere. Ele é utilizado para "comentar" uma linha. Ou seja: linhas que começam com `#` não são interpretadas como comandos. Seria o equivalente a `//` ou `REM` ou `/*` em outras linguagens.
 
 Pois a dica agora é: às vezes você precisa executar vários comandos de uma vez. Para não precisar ficar decorando o que fazer toda vez, basta colocar um comentário ao final, como no exemplo abaixo:
