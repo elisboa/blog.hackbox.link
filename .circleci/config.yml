@@ -16,6 +16,9 @@ jobs:
           name: Install NPM
           command: apt-get install -y npm
       - run:
+          name: Install Python PIP
+          command: apt-get install -y python-pip
+      - run:
           name: Install Hexo CLI
           command: npm install -g hexo-cli
       - restore_cache:
