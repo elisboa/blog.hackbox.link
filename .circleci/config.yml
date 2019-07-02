@@ -19,10 +19,6 @@ jobs:
           key: npm-deps-{{ checksum "package.json" }}
           paths:
             - node_modules
-      - run:
-          name: Limpando pasta public
-          command: |
-            rm -rfv public/*
        - run:
           name: Generate static website
           command: hexo generate
