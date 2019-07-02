@@ -20,8 +20,10 @@ jobs:
           paths:
             - node_modules
       - run:
-          name: Generate static website
+          name: Limpando pasta public
           command: rm -rfv public/*
+       - run:
+          name: Generate static website
           command: hexo generate
       - run:
           name: Install AWS CLI
