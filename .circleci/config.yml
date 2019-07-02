@@ -27,7 +27,7 @@ jobs:
           command: |
             sed -i '/jessie-updates/d' /etc/apt/sources.list
             apt-get update
-            apt-get install -y python-pip python3-pip
+            apt-get install -y python-pip
             pip install awscli
       - run:
           name: Push to S3 bucket
