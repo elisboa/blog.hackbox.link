@@ -32,3 +32,4 @@ jobs:
       - run:
           name: Push to S3 bucket
           command: cd public/ && aws --region=us-east-2 s3 sync . s3://blog.hackbox.link
+
