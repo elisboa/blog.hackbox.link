@@ -30,4 +30,4 @@ jobs:
             apt-get install -y awscli
       - run:
           name: Push to S3 bucket
-          command: cd public/ && aws --profile=eclisboa --region=us-east-2 s3 sync . s3://blog.hackbox.link
+          command: cd public/ && aws --region=us-east-2 s3 sync . s3://blog.hackbox.link
