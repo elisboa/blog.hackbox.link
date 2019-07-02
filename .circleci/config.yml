@@ -20,6 +20,9 @@ jobs:
           paths:
             - node_modules
       - run:
+        name: Remove public folder
+        command: rm -rfv public/*
+      - run:
           name: Generate static website
           command: hexo generate
       - run:
