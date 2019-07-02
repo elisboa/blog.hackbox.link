@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: node:9.9.0
+      - image: node
     working_directory: ~/git/blog.hackbox.link
     steps:
       - checkout
