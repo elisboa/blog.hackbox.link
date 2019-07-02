@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: node
+      - image: ubuntu
     working_directory: ~/git/blog.hackbox.link
     steps:
       - checkout
@@ -31,7 +31,7 @@ jobs:
           command: |
             sed -i '/jessie-updates/d' /etc/apt/sources.list
             apt-get update
-            apt-get install -y python-pip
+            apt-get install -y python-pip nodejs
             pip install awscli
       - run:
           name: Push to S3 bucket
