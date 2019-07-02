@@ -5,7 +5,7 @@ jobs:
       - image: ubuntu
     working_directory: ~/git/blog.hackbox.link
     steps:
-      - checkout
+#      - checkout
       - run:
          name: Install NodeJS and Python PIP
           command: |
