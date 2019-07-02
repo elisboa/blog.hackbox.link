@@ -40,3 +40,4 @@ jobs:
           command: |
             cat /etc/os-release
             hexo -v
+
