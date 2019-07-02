@@ -32,7 +32,7 @@ jobs:
       - run:
           name: Push to S3 bucket
           command: cd public/ && aws s3 sync . s3://blog.hackbox.link
-			- run:
+      - run:
           name: Debug infos
           command: hexo -v
 
