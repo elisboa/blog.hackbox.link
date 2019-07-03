@@ -9,9 +9,17 @@ jobs:
       - run:
           name: Apt Update
           command: apt-get update 
+#      - run:
+#          name: Install NodeJS
+#          command: apt-get install -y nodejs
       - run:
-          name: Install NodeJS
-          command: apt-get install -y nodejs
+          name:  Install NVM
+          command: |
+            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+            source ~/.bashrc
+      - run:
+          name: Install Node 9.9.0
+          command: nvm install 9.9.0
       - run:
           name: Install NPM
           command: apt-get install -y npm
