@@ -15,7 +15,7 @@ jobs:
       - run:
           name: Install Curl
           command: apt-get install -yq curl
-       - run:
+      - run:
           name:  Install NVM
           command: |
             curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
