@@ -21,12 +21,15 @@ jobs:
       - run:
           name: Install Hexo CLI
           command: npm install -g hexo-cli
-#      - restore_cache:
-#          keys:
-#            - npm-deps-{{ checksum "package.json" }}
+      - restore_cache:
+          keys:
+            - npm-deps-{{ checksum "package.json" }}
+      - run:
+          name: Clean Cache
+          command: npm clean cache
       - run:
           name: Install dependencies
-          command: npm install cache clean
+          command: npm install
       - save_cache:
           key: npm-deps-{{ checksum "package.json" }}
           paths:
