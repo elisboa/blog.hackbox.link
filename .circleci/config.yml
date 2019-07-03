@@ -26,7 +26,7 @@ jobs:
             - npm-deps-{{ checksum "package.json" }}
       - run:
           name: Clean Cache
-          command: npm clean cache
+          command: npm cache clean
       - run:
           name: Install dependencies
           command: npm install
