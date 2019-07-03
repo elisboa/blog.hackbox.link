@@ -13,6 +13,9 @@ jobs:
 #          name: Install NodeJS
 #          command: apt-get install -y nodejs
       - run:
+          name: Install Curl
+          command: apt-get install -yq curl
+       - run:
           name:  Install NVM
           command: |
             curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
@@ -22,10 +25,10 @@ jobs:
           command: nvm install 9.9.0
       - run:
           name: Install NPM
-          command: apt-get install -y npm
+          command: apt-get install -yq npm
       - run:
           name: Install Python PIP
-          command: apt-get install -y python-pip
+          command: apt-get install -yq python-pip
       - run:
           name: Install Hexo CLI
           command: npm install -g hexo-cli
