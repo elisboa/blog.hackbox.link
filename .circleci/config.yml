@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: ubuntu
+      - image: node:9.9.0
     working_directory: ~/git/blog.hackbox.link
     steps:
       - checkout
@@ -12,59 +12,59 @@ jobs:
 #      - run:
 #          name: Install NodeJS
 #          command: apt-get install -y nodejs
-      - run:
-          name: Install Curl
-          command: apt-get install -yq curl
-      - run:
-          name:  Install NVM
-          command: |
-            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
-            source ~/.bashrc
-            which nvm
-            nvm install 9.9.0
 #      - run:
-#          name: Install Node 9.9.0
-#          command: nvm install 9.9.0
-      - run:
-          name: Install NPM
-          command: apt-get install -yq npm
-      - run:
-          name: Install Python PIP
-          command: apt-get install -yq python-pip
-      - run:
-          name: Install Hexo CLI
-          command: npm install -g hexo-cli
-      - restore_cache:
-          keys:
-            - npm-deps-{{ checksum "package.json" }}
-      - run:
-          name: Clean Cache
-          command: npm cache clean
-      - run:
-          name: Install dependencies
-          command: npm install
-      - save_cache:
-          key: npm-deps-{{ checksum "package.json" }}
-          paths:
-            - node_modules
+#          name: Install Curl
+#          command: apt-get install -yq curl
 #      - run:
-#          name: Remove public folder
+#          name:  Install NVM
 #          command: |
-#           rm -rfv public/*
-      - run:
-          name: Generate static website
-          command: hexo generate
-      - run:
-          name: Install AWS CLI
-          command:  pip install awscli
-      - run:
-          name: Push to S3 bucket
-          command: cd public/ && aws s3 sync . s3://blog.hackbox.link
-      - run:
-          name: Debug info
-          command: |
-            cat /etc/os-release
-            hexo -v
-            node --version
-            ls -ltrah public
-
+#            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+#            source ~/.bashrc
+#            which nvm
+#            nvm install 9.9.0
+##      - run:
+##          name: Install Node 9.9.0
+##          command: nvm install 9.9.0
+#      - run:
+#          name: Install NPM
+#          command: apt-get install -yq npm
+#      - run:
+#          name: Install Python PIP
+#          command: apt-get install -yq python-pip
+#      - run:
+#          name: Install Hexo CLI
+#          command: npm install -g hexo-cli
+#      - restore_cache:
+#          keys:
+#            - npm-deps-{{ checksum "package.json" }}
+#      - run:
+#          name: Clean Cache
+#          command: npm cache clean
+#      - run:
+#          name: Install dependencies
+#          command: npm install
+#      - save_cache:
+#          key: npm-deps-{{ checksum "package.json" }}
+#          paths:
+#            - node_modules
+##      - run:
+##          name: Remove public folder
+##          command: |
+##           rm -rfv public/*
+#      - run:
+#          name: Generate static website
+#          command: hexo generate
+#      - run:
+#          name: Install AWS CLI
+#          command:  pip install awscli
+#      - run:
+#          name: Push to S3 bucket
+#          command: cd public/ && aws s3 sync . s3://blog.hackbox.link
+#      - run:
+#          name: Debug info
+#          command: |
+#            cat /etc/os-release
+#            hexo -v
+#            node --version
+#            ls -ltrah public
+#
