@@ -22,7 +22,8 @@ comando1 | comando2
 ```
 
 Neste caso, usamos o pipe para automaticamente dizer:
-- `comando2`, pegue a saída do `comando1` e faça algo com ela!
+─ `comando2`, pegue a saída do `comando1` e faça algo com ela!
+
 A seguir temos um exemplo bem comum de como fazer isto:
 ```
 dmesg | grep mount
