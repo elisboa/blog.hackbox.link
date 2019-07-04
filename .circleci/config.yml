@@ -12,6 +12,9 @@ jobs:
       - run:
           name: Apt Update
           command: apt-get update  -q
+      - run:
+          name: Install Git
+          command: apt-get install -yq git
 #      - run:
 #          name: Install NodeJS
 #          command: apt-get install -y nodejs
