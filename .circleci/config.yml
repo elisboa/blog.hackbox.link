@@ -73,4 +73,6 @@ jobs:
             hexo -v
             node --version
             ls -ltrahR public
+            hexo list route
+            hexo list post
 
