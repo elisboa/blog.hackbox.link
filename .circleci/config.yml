@@ -51,20 +51,20 @@ jobs:
 ##          name: Remove public folder
 ##          command: |
 ##           rm -rfv public/*
-#      - run:
-#          name: Generate static website
-#          command: hexo generate
-#      - run:
-#          name: Install AWS CLI
-#          command:  pip install awscli
-#      - run:
-#          name: Push to S3 bucket
-#          command: cd public/ && aws s3 sync . s3://blog.hackbox.link
-#      - run:
-#          name: Debug info
-#          command: |
-#            cat /etc/os-release
-#            hexo -v
-#            node --version
-#            ls -ltrah public
-#
+      - run:
+          name: Generate static website
+          command: hexo generate
+      - run:
+          name: Install AWS CLI
+          command:  pip install awscli
+      - run:
+          name: Push to S3 bucket
+          command: cd public/ && aws s3 sync . s3://blog.hackbox.link
+      - run:
+          name: Debug info
+          command: |
+            cat /etc/os-release
+            hexo -v
+            node --version
+            ls -ltrah public
+
