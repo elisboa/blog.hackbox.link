@@ -22,9 +22,10 @@ jobs:
             source ~/.bashrc
             export NVM_DIR="$HOME/.nvm"
             which nvm
-      - run:
-          name: Install Node 9.9.0
-          command: nvm install 9.9.0
+            nvm install 9.9.0
+#      - run:
+#          name: Install Node 9.9.0
+#          command: nvm install 9.9.0
       - run:
           name: Install NPM
           command: apt-get install -yq npm
