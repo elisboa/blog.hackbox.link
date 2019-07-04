@@ -7,6 +7,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Clean Sources List
+          command: sed -i /jessie-updates/d /etc/apt/sources.list
+      - run:
           name: Apt Update
           command: apt-get update  -q
 #      - run:
