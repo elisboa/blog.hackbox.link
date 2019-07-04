@@ -28,7 +28,7 @@ jobs:
 ##      - run:
 ##          name: Install Node 9.9.0
 ##          command: nvm install 9.9.0
-#      - run:
+      - run:
           name: Install NPM
           command: apt-get install -yq npm
       - run:
