@@ -72,5 +72,5 @@ jobs:
             cat /etc/os-release
             hexo -v
             node --version
-            ls -ltrah public
+            ls -ltrahR public
 
