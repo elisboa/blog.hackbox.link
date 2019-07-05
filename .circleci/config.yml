@@ -40,12 +40,6 @@ jobs:
       - run:
           name: Install Hexo CLI
           command: npm install -g hexo-cli
-      - run:
-          name: Install Hexo Tag Bootstrap (optional for freemind.386 theme)
-          command: npm install hexo-tag-bootstrap --save
-      - run:
-          name: install hexo-generator-search (optional for freemind.386 theme)
-          command: npm install hexo-generator-search --save
       - restore_cache:
           keys:
             - npm-deps-{{ checksum "package.json" }}
@@ -54,7 +48,7 @@ jobs:
           command: npm install
       - run:
           name: Download alpha-dust theme
-          command: git clone git@github.com:blackshow/hexo-theme-freemind.386.git themes/freemind386
+          command: git clone https://github.com/klugjo/hexo-theme-alpha-dust themes/alpha-dust
       - save_cache:
           key: npm-deps-{{ checksum "package.json" }}
           paths:
@@ -81,3 +75,4 @@ jobs:
             ls -ltrahR public
             hexo list route
             hexo list post
+
