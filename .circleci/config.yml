@@ -48,7 +48,7 @@ jobs:
           command: npm install
       - run:
           name: Download alpha-dust theme
-          command: git clone https://github.com/CodeDaraW/Hacker themes/hacker
+          command:  git clone https://github.com/smackgg/hexo-theme-smackdown themes/smackdown
       - save_cache:
           key: npm-deps-{{ checksum "package.json" }}
           paths:
