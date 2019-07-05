@@ -51,9 +51,7 @@ jobs:
           command:  git clone https://github.com/chaooo/hexo-theme-BlueLake.git themes/BlueLake
       - run:
           name: Install Theme Dependencies
-          command: | 
-          for npm_pack in 'hexo-renderer-jade@0.3.0' 'hexo-renderer-styls'
-          do
+          command: | for npm_pack in 'hexo-renderer-jade@0.3.0' 'hexo-renderer-styls' ; do
             npm install "${npm_pack}" --save
           done
       - save_cache:
