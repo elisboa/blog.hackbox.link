@@ -53,10 +53,10 @@ jobs:
           key: npm-deps-{{ checksum "package.json" }}
           paths:
             - node_modules
-##      - run:
-##          name: Remove public folder
-##          command: |
-##           rm -rfv public/*
+      - run:
+          name: Remove public folder
+          command: |
+           rm -rfv public/*
       - run:
           name: Generate static website
           command: hexo generate
