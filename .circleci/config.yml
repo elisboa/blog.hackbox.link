@@ -52,7 +52,7 @@ jobs:
       - run:
           name: Install Theme Dependencies
           command: | 
-            for npm_pack in 'hexo-renderer-jade@0.3.0' 'hexo-renderer-styls'
+            for npm_pack in 'hexo-renderer-pug' 'hexo-renderer-styls'
             do  npm install "${npm_pack}" --save
             done
       - save_cache:
