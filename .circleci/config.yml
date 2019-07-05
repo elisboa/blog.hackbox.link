@@ -52,7 +52,7 @@ jobs:
       - run:
           name: Install Theme Dependencies
           command: | 
-            for npm_pack in 'hexo-renderer-pug-load' 'hexo-renderer-stylus'
+            for npm_pack in 'hexo-renderer-pug-loader' 'hexo-renderer-stylus'
             do  npm install "${npm_pack}" --save
             done
       - save_cache:
