@@ -5,14 +5,14 @@ tags: bash
 
 ---
 
-# Introdução
+### Introdução
 
 No terminal, seja ele `bash`, `sh`, `zsh`, até mesmo no `fish` muitos se sentem perdidos por não terem tanta intimidade. E mesmo depois de algum tempo ainda não exploram tudo o que ele tem a oferecer.
 Neste curtíssimo artigo vamos explorar algumas dicas de produtividade que utilizo no dia-a-dia que podem facilitar a vida de quem ainda se sente limitado pela tela preta.
 
 ---
 
-# Entrando pelo cano
+### Entrando pelo cano
 
 No mundo Unix, existe uma filosofia: um comando deve fazer apenas uma coisa; da melhor maneira possível. E como fazer quando precisamos de uma solução mais complexa que aquele comando não oferece? A solução é conectar comandos. Para isso, temos algumas opções, que vamos mostrar aqui bem rapidamente: o cano ou pipe simples e o duplo; os sinais de menor e maior; o "e" comercial, simples e duplo; e, por fim, o jogo-da-velha/sustenido/hashtag que eu carinhosamente chamo de "tralha": `#` - esse cara é demais e vai mudar tua vida, por isso será falado por último ; )
 Suponhamos que precisamos filtrar a saída de um comando. O mais comum é:
@@ -32,7 +32,7 @@ Basicamente rodamos o comando `dmesg`, filtrando apenas as linhas que tenham a p
 
 ---
 
-# Vai pra lá, vem pra cá
+### Vai pra lá, vem pra cá
 
 Antes de começarmos a falar dos sinais de maior e menor, precisamos entender que:
 no mundo Unix, TUDO são arquivos e diretórios. Mas quando eu falo tudo, é tudo MESMO! Até mesmo dispositivos de hardware como placas de som ou impressoras. Mas isso é assunto pra outro artigo. Se quiser ler mais sobre, recomendo pesquisar sobre os file systems virtuais `/proc` e `/sys`, pra começar.
@@ -54,7 +54,6 @@ echo Amanhã é terça-feira >> /tmp/que_dia.txt
 cat /tmp/que_dia.txt
 ```
 Se o arquivo estiver vazio ou não existir, não tem problema usar o `>>`. Ele vai criá-lo automaticamente. E se já tiver algum conteúdo, vai adicionar a saída do comando echo ao seu final. Bem, agora que já falamos do maior e do maior-duplo, vamos falar do menor. Como eu havia dito anteriormente, um comando tem três canais de comunicação, vamos relembrar:
-
 * entrada padrão
 * saída padrão
 * saída de erro padrão
@@ -97,7 +96,7 @@ Antes de continuarmos: este texto acabou ficando meio grande demais, então vou 
 
 ---
 
-# Por baixo dos panos
+### Por baixo dos panos
 A próxima dica agora é o `&`:
 ```
 comando &
@@ -108,12 +107,12 @@ Chama o comando normalmente: `comando`
 * Pressiona `Ctrl + Z` para enviar o processo para o segundo plano (ele vai ser pausado)
 * Digita o comando `bg` para que o processo continue rodando em segundo plano
 
-## Dicas rápidas
-### Para listar os processos rodando em segundo plano, use o comando:
+### Dicas rápidas
+#### Para listar os processos rodando em segundo plano, use o comando:
 ```
 jobs
 ```
-### Para voltar para um comando específico:
+#### Para voltar para um comando específico:
 ```
 fg %N
 ```
@@ -125,7 +124,7 @@ kill %N
 
 ---
 
-# Por onde for, quero ser seu par
+### Por onde for, quero ser seu par
 Imagine que você só quer rodar um determinado comando se o resultado de um comando anterior funcionar. É aí que entra o e-comercial duplo:
 ```
 ls /etc/shadow && echo ALL YOUR PASSWORDS ARE BELONG TO US
@@ -139,7 +138,7 @@ false || echo YOU ARE FAKE NEWS
 
 ---
 
-# Ela partiu, partiu e nunca mais voltou
+### Ela partiu, partiu e nunca mais voltou
 Tanto para o `&&` quanto para o `||` é comum filtrarmos a saída padrão ou até mesmo a saída de erro padrão. Lembra que lá em cima eu falei que TUDO no mundo Unix eram arquivos e diretórios (pastas)? Pois bem, existe um arquivo só para onde você pode jogar tudo aquilo que não quiser ver: conheça o `/dev/null`
 Quando a gente quiser jogar uma saída fora, basta fazer assim:
 ```
@@ -158,7 +157,7 @@ Experimente executar o comando sem o `2> /dev/null` para ver no que dá:
 ```
 cat /
 ```
-# Chegou a hora
+### Chegou a hora
 Se você aguentou até aqui, meus parabéns! #WeAreTheChampions
 Agora vamos falar da tralha/cerquilha/sustenido/_hashtag_. E vai ser bem rápido, prometo `^_^#`
 Quando escrevemos um _shell script_, é muito comum iniciarmos algumas linhas com este tão nobre caractere. Ele é utilizado para "comentar" uma linha. Ou seja: linhas que começam com `#` não são interpretadas como comandos. Seria o equivalente a `//` ou `REM` ou `/*` em outras linguagens.
@@ -183,6 +182,7 @@ Bem mais fácil, né? Agora, note que ao rodar o comando `history` ele retorna u
 !N
 ```
 Onde `N` seria o número da linha correspondente ao comando que você quer rodar. E por hoje é só isso mesmo, viu? `^_^#`
+
 `EOF`
 ---
 
