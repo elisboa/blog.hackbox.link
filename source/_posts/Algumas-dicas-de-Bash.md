@@ -183,6 +183,6 @@ Bem mais fácil, né? Agora, note que ao rodar o comando `history` ele retorna u
 !N
 ```
 Onde `N` seria o número da linha correspondente ao comando que você quer rodar. E por hoje é só isso mesmo, viu? `^_^#`
-
+`EOF`
 ---
 
