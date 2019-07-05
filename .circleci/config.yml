@@ -48,7 +48,7 @@ jobs:
           command: npm install
       - run:
           name: Download alpha-dust theme
-          command: git clone https://github.com/klugjo/hexo-theme-alpha-dust themes/alpha-dust
+          command: git clone https://github.com/CodeDaraW/Hacker themes/hacker
       - save_cache:
           key: npm-deps-{{ checksum "package.json" }}
           paths:
@@ -64,9 +64,6 @@ jobs:
           name: Install AWS CLI
           command:  pip install awscli
       - run:
-          name: Push to S3 bucket
-          command: cd public/ && aws s3 sync . s3://blog.hackbox.link
-      - run:
           name: Debug info
           command: |
             cat /etc/os-release
@@ -74,5 +71,7 @@ jobs:
             node --version
             ls -ltrahR public
             hexo list route
-            hexo list post
-
+            hexo list post          
+      - run:
+          name: Push to S3 bucket
+          command: cd public/ && aws s3 sync . s3://blog.hackbox.link
