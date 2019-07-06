@@ -48,13 +48,13 @@ jobs:
           command: npm install
       - run:
           name: Download theme
-          command:  git clone https://github.com/chaooo/hexo-theme-BlueLake.git themes/BlueLake
-      - run:
-          name: Install Theme Dependencies
-          command: | 
-            for npm_pack in 'hexo-renderer-pug-loader' 'hexo-renderer-stylus'
-            do  npm install "${npm_pack}" --save
-            done
+          command:  git clone https://github.com/klugjo/hexo-theme-alpha-dust themes/alpha-dust
+#      - run:
+#          name: Install Theme Dependencies
+#          command: | 
+#            for npm_pack in 'hexo-renderer-pug-loader' 'hexo-renderer-stylus'
+#            do  npm install "${npm_pack}" --save
+#            done
       - save_cache:
           key: npm-deps-{{ checksum "package.json" }}
           paths:
