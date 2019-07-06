@@ -55,14 +55,17 @@ jobs:
 #            for npm_pack in 'hexo-renderer-pug-loader' 'hexo-renderer-stylus'
 #            do  npm install "${npm_pack}" --save
 #            done
+      - run:
+          name: Set theme language
+          command: cp -fv themes/alpha-dust/languages/pt.yml themes/alpha-dust/languages/default.yml 
       - save_cache:
           key: npm-deps-{{ checksum "package.json" }}
           paths:
             - node_modules
-      - run:
-          name: Remove public folder
-          command: |
-            rm -rfv public/*
+#      - run:
+#          name: Remove public folder
+#          command: |
+#            rm -rfv public/*
       - run:
           name: Generate static website
           command: hexo generate
