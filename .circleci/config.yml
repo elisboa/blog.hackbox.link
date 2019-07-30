@@ -83,4 +83,4 @@ jobs:
             hexo list post          
       - run:
           name: Push to S3 bucket
-          command: cd public/ && aws s3 sync . s3://blog.hackbox.link --delete
+          command: cd public/ && aws s3 sync . s3://blog.hackbox.link --no-progress --delete
