@@ -43,7 +43,7 @@ jobs:
 #      - restore_cache:
 #          keys:
 #            - npm-deps-{{ checksum "package.json" }}
-      - run:
+#      - run:
 #          name: Clean NPM cache
 #          command: npm cache clean --force
       - run:
