@@ -48,7 +48,7 @@ jobs:
           command: npm cache clean --force
       - run:
           name: Install dependencies
-          command: npm install
+          command: npm cache clear --force && npm install --no-shrinkwrap --update-binary
       - run: 
           name: Debug NPM Install
           command: find /root/.npm/_logs/ -type f -exec cat {} \;
