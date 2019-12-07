@@ -44,6 +44,9 @@ jobs:
 #          keys:
 #            - npm-deps-{{ checksum "package.json" }}
       - run:
+          name: Clean NPM cache
+          command: npm cache clean --force
+      - run:
           name: Install dependencies
           command: npm install
       - run: 
