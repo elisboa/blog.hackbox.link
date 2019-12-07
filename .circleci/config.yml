@@ -8,10 +8,11 @@ jobs:
       - checkout
       - run:
           name: Clean Sources List
+          command: echo "running: sed -i /jessie-updates/d /etc/apt/sources.list"
           command: sed -i /jessie-updates/d /etc/apt/sources.list
       - run:
-          name: Apt Update
-          command: apt-get update  -q
+          name: Apt-Get Update
+          command: apt-get update
       - run:
           name: Install Git
           command: apt-get install -yq git
@@ -40,12 +41,13 @@ jobs:
       - run:
           name: Install Hexo CLI
           command: npm install -g hexo-cli
-      - restore_cache:
-          keys:
-            - npm-deps-{{ checksum "package.json" }}
+#      - restore_cache:
+#          keys:
+#            - npm-deps-{{ checksum "package.json" }}
       - run:
           name: Install dependencies
           command: npm install
+          command: find /root/.npm/_logs/ -type f -exec cat {} \;
       - run:
           name: Download theme
           command:  git clone https://github.com/klugjo/hexo-theme-alpha-dust themes/alpha-dust
