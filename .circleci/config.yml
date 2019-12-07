@@ -8,7 +8,7 @@ jobs:
       - checkout
       - run:
           name: Clean Sources List
-          command: echo "running: sed -i /jessie-updates/d /etc/apt/sources.list"
+          command: echo running sed -i /jessie-updates/d /etc/apt/sources.list
           command: sed -i /jessie-updates/d /etc/apt/sources.list
       - run:
           name: Apt-Get Update
