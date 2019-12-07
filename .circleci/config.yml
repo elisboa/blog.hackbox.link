@@ -7,8 +7,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Clean Sources List
-          command: echo running sed -i /jessie-updates/d /etc/apt/sources.list
+          name: Fix Sources List     
           command: sed -i /jessie-updates/d /etc/apt/sources.list
       - run:
           name: Apt-Get Update
@@ -47,6 +46,8 @@ jobs:
       - run:
           name: Install dependencies
           command: npm install
+      - run: 
+          name: Debug NPM Install
           command: find /root/.npm/_logs/ -type f -exec cat {} \;
       - run:
           name: Download theme
