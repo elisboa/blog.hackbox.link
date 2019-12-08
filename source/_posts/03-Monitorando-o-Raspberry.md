@@ -343,11 +343,20 @@ pi        5969  0.1  1.6  43804 16544 ?        S    15:10   0:06 /usr/sbin/smbd
 Note que eu coloquei algumas mensagens utilizando o comando `echo`, além de ter adicionado também um filtro para não mostrar as variações de tensão (`gmesg | egrep -vi voltag `)ao exibir as últimas 15 mensagens do dmesg. Também coloquei uma espera de 3 segundos (`sleep 3`) para que ele repita este mesmo bloco de comandos o tempo todo. Para sair deste *loop*, basta 
 pressionar Control + C.
 
+Repare que utilizei o comando `tac`, que faz quase a mesma coisa que o `cat`, porém invertendo a ordem das linhas. Mostra as últimas primeiro. Fica mais fácil de ler os logs assim, na minha opinião. Mas você não precisa se não quiser :-)
+
 ## Conclusão
 
-Espero que tenham gostado e aprendido mais um pouco com este artigo sobre monitoração. Visite meu repositório de scripts e comandos para o Raspberry e contribua com os seus você também!
+Espero que tenham gostado e aprendido mais um pouco com este artigo sobre monitoração. Visite meu [repositório de scripts e comandos para o Raspberry](https://github.com/elisboa/raspscripts) e contribua com os seus você também!
 
 Até a próxima.
+
+### Agradecimentos e referências
+
+Quero agradecer ao [JC GreenMind](https://github.com/greenmind-sec) pela indicação do [Stackedit](https://stackedit.io/), editor que usei na postagem deste artigo e gostei muito.
+
+Também quero agradecer ao [Carlos Loyola](https://github.com/cloyol1) pela ajuda com a revisão deste texto enquanto ainda era um rascunho.
+
 
 ---
 `EoF`
