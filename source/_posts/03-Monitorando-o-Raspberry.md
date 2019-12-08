@@ -8,11 +8,11 @@ tags: raspberry, shellscript, linux
 
 ## Introdução
 
-É muito comum a gente começar a usar o raspberry mas não ter muita noção de como monitorá-lo, saber o que está acontecendo com ele. Este post tem como intenção mostrar os comandos mais comuns de monitoração que o Linux oferece e mostrar como podem ser usados para ter uma visibilidade da saúde do seu hardware.
+É muito comum a gente começar a usar o Raspberry Pi sem ter muita noção de como monitorá-lo, saber o que realmente está acontecendo com ele. Este humilde *post* tem como intenção mostrar os comandos mais comuns de monitoração que o Linux oferece e mostrar como podem ser usados para ter uma visibilidade da saúde do seu hardware.
 
 **Aviso: aqui não vamos tratar de ferramentas de monitoração, como Zabbix e Prometheus. A ideia é criar nossa própria rotina de monitoração através da ecução periódica de uma série de comandos que o Linux já oferece**
 
-**##### **Mais um aviso: todos os comandos deste texto devem ser executados como root. Não recomendo o sudo, pois vamos precisar rodar muitas coisas, editar arquivos, rodar de novo etc. Então é mais fácil iniciar uma sessão como root mesmo**
+**Mais um aviso: todos os comandos deste texto devem ser executados como root. Não recomendo o sudo, pois vamos precisar rodar muitas coisas, editar arquivos, rodar de novo etc. Então é mais fácil iniciar uma sessão como root mesmo**
 
 ## Começando a brincadeira
 
@@ -29,7 +29,7 @@ Antes de mais nada, vamos focar nos recursos que devemos monitorar. Esta é a mi
 
 Agora que definimos quais aspectos iremos monitorar, vamos repassar quais comandos vamos utilizar. Depois disso, vamos juntar todos eles num comandão e ver como isso vai funcionar.
 
-Aqui, cabe um aviso a quem não tem muita afinidade com o terminal do GNU/Linux: vamos utilizar comandos simples, comandos concatenados e até um shell script. Portanto, vamos passar primeiro pelos exemplos mais simples para depois explorar os mais complexos.
+Aqui, cabe um aviso a quem não tem muita afinidade com o terminal do GNU/Linux: vamos utilizar comandos simples, comandos concatenados e até um *shell script*. Portanto, vamos passar primeiro pelos exemplos mais simples para depois explorar os mais complexos.
 
 Antes de começarmos, sugiro instalar um editor de textos. Você pode utilizar o nano:
 ```
@@ -113,11 +113,11 @@ mmcblk0           0.81         0.00         0.01        349       8011
 Agora sim, já temos nossa monitoração de disco. Mas antes de ir para o próximo passo, vamos revisar rapidamente as métricas que estamos monitorando:
 * tps — *transfers per second*, ou seja: transferências por segundo. Em resumo, é o número de requisições de transferência feitas pelo sistema operacional. Podem ser tanto para escrever quanto para ler. O tamanho delas não é considerado aqui
 * MB_read/s — é o número de leituras por segundo. Cada leitura compreende um bloco de 512 bytes
-* MB_wrtn/s — é o número de gravações por segundo.
+* MB_wrtn/s — é o número de gravações por segundo
 * MB_read — é o número total de leituras feitas desde o boot
 * MB_wrtn — é o número total de escritas feitas desde o boot
 
-Facinho, né? Agora vamos pro próximo comando
+Facinho, né? Agora vamos pro próximo comando.
 
 #### Monitoração de memória
 
@@ -149,7 +149,7 @@ O `-w` deixou a visualização mais larga. Pode desconsiderá-lo se não tiver f
 
 O `-S` serve para escolhermos o tipo de unidade a ser medida e o `m` logo após diz que queremos megas.
 
-Note que além da memória RAM, ele também exibe informações sobre a memória SWAP, entrada e saída (io), atividade do sistema e, por último, CPU.
+Note que além da memória RAM, ele também exibe informações sobre a memória SWAP, entrada e saída (o famoso I/O), atividade do sistema e, por último, CPU.
 
 Vamos passar rapidamente pelos detalhes de cada um:
 
@@ -345,11 +345,15 @@ pressionar Control + C.
 
 Repare que utilizei o comando `tac`, que faz quase a mesma coisa que o `cat`, porém invertendo a ordem das linhas. Mostra as últimas primeiro. Fica mais fácil de ler os logs assim, na minha opinião. Mas você não precisa se não quiser :-)
 
+Como rodar todos estes comandos dá uma mão de obra danada, resolvi criar um arquivo de *script* com seu conteúdo. Salvei ele com o nome de [geral.sh](https://raw.githubusercontent.com/elisboa/raspscripts/master/geral.sh).
+
 ## Conclusão
 
-Espero que tenham gostado e aprendido mais um pouco com este artigo sobre monitoração. Visite meu [repositório de scripts e comandos para o Raspberry](https://github.com/elisboa/raspscripts) e contribua com os seus você também!
+Espero que tenham gostado e aprendido mais um pouco com este artigo sobre monitoração. Visite meu [repositório de scripts e comandos para o Raspberry](https://github.com/elisboa/raspscripts).
 
-Até a próxima.
+Pensou em algo que gostaria de monitorar e não está aqui? Crie uma [*issue*](https://github.com/elisboa/raspscripts/issues/new) ou um [*pull-request*](https://github.com/elisboa/raspscripts/compare) para mim que podemos inclui-lo na próxima versão!
+
+Até a próxima e obrigado pela companhia até aqui. Nos vemos no próximo artigo, que prometo que será mais curto — assim espero!
 
 ### Agradecimentos e referências
 
