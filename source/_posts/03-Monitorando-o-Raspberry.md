@@ -298,7 +298,7 @@ Vamos agora copiar este script para um local mais apropriado. No meu raspberry, 
 Agora vamos juntar todos os comandos que utilizamos em um só, porém com algumas modificações para que fique tudo mais legível:
 
 ```
- while true ; do clear ; iostat -d mmcblk0 -m ; echo ; vmstat -Sm ; echo ; /usr/local/sbin/temp.sh ; echo -n 'Last Undervoltage Message: ' ; dmesg | grep -i voltage | tail -n1 ; echo -e "\n" ; echo 'Most memory consuming proccess: ' ; ps aux --sort=-%mem | head -n2 ; echo ; dmesg | tac | egrep -vi voltage | head -n 15 ; sleep 3 ; done
+while true ; do clear ; iostat -d mmcblk0 -m ; echo ; vmstat -Sm ; echo ; /usr/local/sbin/temp.sh ; echo -n 'Last Undervoltage Message: ' ; dmesg | grep -i voltage | tail -n1 ; echo -e "\n" ; echo 'Most memory consuming proccess: ' ; ps aux --sort=-%mem | head -n2 ; echo ; dmesg | tac | egrep -vi voltage | head -n 15 ; sleep 3 ; done
 ```
 
 Tudo isso aí é uma linha só! Garrancheira danada, mas que vai funcionar!
