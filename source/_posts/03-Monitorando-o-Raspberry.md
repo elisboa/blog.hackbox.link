@@ -4,17 +4,17 @@ date: 2019-12-07 15:15:15
 tags: raspberry, shellscript, linux
 ---
 
-# Introdução
+# Monitorando o Raspberry
+
+## Introdução
 
 É muito comum a gente começar a usar o raspberry mas não ter muita noção de como monitorá-lo, saber o que está acontecendo com ele. Este post tem como intenção mostrar os comandos mais comuns de monitoração que o Linux oferece e mostrar como podem ser usados para ter uma visibilidade da saúde do seu hardware.
 
-##### Aviso: aqui não vamos tratar de ferramentas de monitoração, como Zabbix e Prometheus. A ideia é criar nossa própria rotina de monitoração através da execução periódica de uma série de comandos que o Linux já oferece
+**Aviso: aqui não vamos tratar de ferramentas de monitoração, como Zabbix e Prometheus. A ideia é criar nossa própria rotina de monitoração através da ecução periódica de uma série de comandos que o Linux já oferece**
 
-##### Mais um aviso: todos os comandos deste texto devem ser executados como root. Não recomendo o sudo, pois vamos precisar rodar muitas coisas, editar arquivos, rodar de novo etc. Então é mais fácil iniciar uma sessão como root mesmo
+**##### **Mais um aviso: todos os comandos deste texto devem ser executados como root. Não recomendo o sudo, pois vamos precisar rodar muitas coisas, editar arquivos, rodar de novo etc. Então é mais fácil iniciar uma sessão como root mesmo**
 
----
-
-# Começando a brincadeira
+## Começando a brincadeira
 
 Aí você tá lá todo feliz, acabou de instalar o Raspbian. Vira root. Dá uns `cd` e `ls` aqui e ali, para e suspira. Fica olhando então pra tela sem a menor ideia do que fazer com aquele troço. Aí o ícone do raio começa a piscar no canto superior direito e você fica preocupado. E agora?
 
@@ -25,9 +25,7 @@ Antes de mais nada, vamos focar nos recursos que devemos monitorar. Esta é a mi
 * Processo que mais consome memória — devido à pouca memória, é sempre importante saber quem pode pôr tudo a perder a qualquer momento :D
 * Desempenho geral da memória — monitoração de toda a atividade de memória, tanto a RAM quanto a *swap*
 
----
-
-# Preparação inicial
+## Preparação inicial
 
 Agora que definimos quais aspectos iremos monitorar, vamos repassar quais comandos vamos utilizar. Depois disso, vamos juntar todos eles num comandão e ver como isso vai funcionar.
 
@@ -49,7 +47,7 @@ Em quaisquer dos casos, vou deixar manuais bem básicos aqui para você consegui
 * [Manual básico do Nano](https://www.vivaolinux.com.br/artigo/Introducao-ao-Linux-O-editor-de-texto-Nano)
 * [Manual básico do Vim](https://www.vivaolinux.com.br/artigo/Guia-rapido-VI)
 
-# Botando a mão na massa
+## Utilizando comandos básicos
 
 Agora que:
 * já sabemos quais partes do hardware iremos monitorar
@@ -59,16 +57,16 @@ podemos começar de fato a monitorar nosso raspinho.
 
 Vamos começar pelos mais fáceis, que exigem apenas um comando.
 
-## Monitoração de disco e memória
+### Monitoração de disco e memória
 
 Monitorar o disco e a memória exigem apenas um comando. Entretanto, vou dissecar um pouco o que cada comando mostra na tela, para entendermos a importância de cada informação.
 
-### Monitoração de disco
+#### Monitoração de disco
 
 Para monitorar o disco, utilizamos o comando `iostat`. Ele faz parte do pacote sysstat. Vamos instalá-lo caso ele ainda não esteja no sistema:
 
 ```
-apt-get update && sudo apt-get install -yq sysstat
+apt-get update && apt-get install -yq sysstat
 ```
 
 Agora, basta rodar o comando:
@@ -103,6 +101,7 @@ mmcblk0           0.81         0.66        15.04     357772    8202325
 Bem melhor, né?
 
 Para deixar um pouco mais legivel, acho que podemos mudar só mais uma coisa: exibir as quantidades em megas em vez de kilos:
+
 ```
 root@raspberrypi:~# iostat -d mmcblk0 -m
 Linux 4.14.98-v7+ (raspberrypi)         12/08/19        _armv7l_        (4 CPU)
@@ -120,5 +119,69 @@ Agora sim, já temos nossa monitoração de disco. Mas antes de ir para o próxi
 
 Facinho, né? Agora vamos pro próximo comando
 
-`EoF`
+#### Monitoração de memória
+
+Vamos utilizar o comando `vmstat` para monitorar a memória do sistema. Ele está presente no pacote procps. Se o comando ainda não estiver disponível no terminal, instale agora:
+
+```
+sudo apt-get update && apt-get install -yq procps
+```
+
+Assim como o iostat, o vmstat também é bem simples de se utilizar:
+
+```
+root@raspberrypi:~# vmstat
+procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
+ r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st
+ 3  0    256 131720  94376 683096    0    0     0     4    9   13  1  2 97  0  0
+```
+
+Agora, vamos utilizar alguns parâmetros para tornar a visualização um pouco melhor (ou não!):
+
+```
+root@raspberrypi:~# vmstat -Sm -w
+procs -----------------------memory---------------------- ---swap-- -----io---- -system-- --------cpu--------
+ r  b         swpd         free         buff        cache   si   so    bi    bo   in   cs  us  sy  id  wa  st
+ 1  0            0          132           97          701    0    0     0     4    9   13   1   2  97   0   0
+```
+
+O `-w` deixou a visualização mais larga. Pode desconsiderá-lo se não tiver ficado bom para você.
+
+O `-S` serve para escolhermos o tipo de unidade a ser medida e o `m` logo após diz que queremos megas.
+
+Note que além da memória RAM, ele também exibe informações sobre a memória SWAP, entrada e saída (io), atividade do sistema e, por último, CPU.
+
+Vamos passar rapidamente pelos detalhes de cada um:
+
+* procs
+  * r — número de processos em execução (rodando ou prontos para rodar)
+  * b — número de processos dormindo
+* memory
+  * swpd — quantidade de memória virtual utilizada
+  * free — quantidade de memória física disponível
+  * buff — memória utilizada como buffer (discos, placas de som, rede, teclados e todos os outros equipamentos utilizam este tipo de memória durante suas atividades)
+  * cache — esta é a memória com conteúdo utilizado constantemente, para ser mais rapidamente reaproveitado
+* swap
+  * si — quantidade de memória virtual lida a partir do(s) disco(s) por segundo
+  * so — quantidade de memória virtual escrita no(s) disco(s) por segundo
+* io
+  * bi — quantidade de blocos recebidos de um dispositivo por segundo
+  * bo — quantidade de blocos enviados para um dispositivo por segundo
+* system
+  * in — número de interrupções por segundo
+  * cs — número de trocas de contexto por segundo
+* cpu (valores expressos em porcentagem do tempo total de CPU: 100%)
+  * us — tempo gasto executando qualquer código que não seja parte do núcleo do sistema operacional, como aplicativos, interação com o usuário etc (*user time*)
+  * sy — tempo gasto executando código relacionado ao kernel ou seus módulos (*system time*)
+  * id — tempo ocioso, sem fazer nada, esperando tarefas
+  * wa — tempo gasto aguardando atividades de entrada e saída (I/O), como quando o CPU aguarda uma escrita de arquivos em disco
+  * st — tempo "roubado" de uma máquina virtual, quanto maior, pior. Simplificando muito, se duas máquinas virtuais estiverem dividindo o mesmo hardware, uma sempre irá roubar o tempo da outra. Então, se esta métrica estiver muito alta, você provavelmente terá nas mãos um sistema muito lento. Mas como estamos falando de raspberry, podemos desconsiderar isto por enquanto (eu acho)
+
+Como você pode notar, o vmstat mostra mais que simplesmente informações de memória. É uma ferramenta poderosa para ter um bom olhar sobre diversos aspectos do seu equipamento. Mas ainda tem mais. Vamos continuar…
+
+## Comandos concatenados
+
+As informações que vamos coletar agora dependem da execução de mais de um comando ao mesmo tempo. Esta é a segunda fase do nosso monitoramento. Para isso, vamos utilizar o 
+
 ---
+`EoF`
