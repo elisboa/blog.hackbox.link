@@ -181,7 +181,173 @@ Como você pode notar, o vmstat mostra mais que simplesmente informações de me
 
 ## Comandos concatenados
 
-As informações que vamos coletar agora dependem da execução de mais de um comando ao mesmo tempo. Esta é a segunda fase do nosso monitoramento. Para isso, vamos utilizar o 
+As informações que vamos coletar agora dependem da execução de mais de um comando ao mesmo tempo. Esta é a segunda fase do nosso monitoramento. Para isso, vamos utilizar o *pipe*, representado pelo caractere `|`. Este cara vai nos permitir pegar a saída de um comando e utilizá-la como entrada para outro. Geralmente isto é feito quando o `comando1` gera muita informação e precisamos filtrar apenas o que realmente queremos, utilizando o `comando2`.
+
+Agora chega de papo e vamos ao que interessa!
+
+### Filtrando a variação de tensão/voltagem
+
+O GNU/Linux tem um comando que sempre informa as mensagens geradas pelos *drivers* de dispositivos desde o último *boot*. Este comando se chama `dmesg`. Ele é quem vai nos dizer quando e se houve alguma variação na tensão da corrente, assim como nos informar se ela se estabilizou ou não.
+
+Acontece que o `dmesg`, ao ser executado, sempre vai mostrar tudo o que aconteceu desde o começo do *boot*. Mas só queremos o último estado da variação da tensão. Para isto, usaremos um "filtro", pegando sua saída e tirando apenas o que nos interessa de fato.
+
+Aqui em casa fiz da seguinte maneira:
+
+```
+root@raspberrypi:~# dmesg | grep -i voltage | tail -n1
+root@raspberrypi:~#
+```
+
+Explicando bem rapidamente:
+* `dmesg` — mostra um histórico de mensagens de todos os drivers, desde o momento do boot
+* `grep` — comando que filtra a saída do comando anterior
+  * `-i` — ignora a diferença entre maiúsculas e minúsculas
+  * `voltage` — é o termo que estamos buscando
+* `tail` — comando utilizando para mostrar as últimas dez linhas de um arquivo ou texto
+  * `-n1` — faz o `tail` mostrar apenas a última linha
+
+### Mostrando o processo que consome mais memória
+
+Como os Raspberries 2 e o 3 tem apenas 1GB de RAM, é importante saber quem está consumindo mais memória. Para isso, vamos utilizar essa sequência de comandos:
+
+```
+root@raspberrypi:~# ps aux --sort=-%mem | head -n2
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root     23999  0.3  1.6  49956 16888 ?        S    Dec07   3:46 /usr/sbin/smbd
+```
+
+Temos duas maneiras de comprovar se este comando está funcionando mesmo:
+
+1. rodar um outro comando que consuma mais memória e, em outro terminal, rodar novamente este `ps`.
+2. abrir, em outro terminal, o comando `htop`, pressionar Shift + M e verificar qual o comando com maior consumo de memória por lá e ver se bate com nosso `ps`.
+
+Partindo do princípio que está tudo certo, vamos então dissecar o que essa sequência faz:
+
+* `ps` — mostra a lista de processos (em execução ou em espera) no sistema
+  * `a` — mostra todos os processos (de outros terminais e de outros usuários)
+  * `u` — mostra o dono de cada processo
+  * `x` — exibe os processos que não estão associados a um terminal (como daemons ou chamadas ao núcleo)
+  * `--sort=%mem` — organiza por ordem de consumo de memória
+* `head` — comando utilizado para mostrar as primeiras dez linhas de um arquivo ou texto
+  * `-n2` — faz o `head` mostrar apenas as duas primeiras linhas
+
+## Monitorando a temperatura
+
+Agora vem a parte mais "complexa", que é escrever um script para podermos monitorar a temperatura do equipamento. Como vamos querer comprovar o funcionamento correto do nosso script, é interessante termos algumas ferramentas que nos ajude a causar a variação de temperatura que queremos. São elas:
+
+1. O pacote stress `apt-get update && apt-get install stress -yq`.
+2. Um ventilador.
+
+Agora que temos tudo preparado, pegue o seu editor preferido e insira nele o seguinte conteúdo:
+```
+#!/bin/bash
+
+cpuTemp0=$(cat /sys/class/thermal/thermal_zone0/temp)
+cpuTemp1=$(($cpuTemp0/1000))
+cpuTemp2=$(($cpuTemp0/100))
+cpuTempM=$(($cpuTemp2 % $cpuTemp1))
+
+echo CPU temp"="$cpuTemp1"."$cpuTempM"'C"
+```
+
+Após inserir o conteúdo acima, saia salvando e dê permissão de execução ao seu arquivo:
+
+`chmod a+x temp.sh`
+
+Vamos rodar e ver o que acontece?
+
+```
+root@raspberrypi:~# ./temp.sh
+CPU temp=51.3'C
+```
+É, parece que deu certo!
+
+Agora, vamos fazer um teste de estresse e ver se a temperatura subiu:
+
+```
+root@raspberrypi:/# echo temperatura antes ; ./temp.sh ; echo ;  stress --vm 2 --vm-bytes 320M --timeout 180s --cpu 16 --io 4 -d 32 ; echo ; echo temperatura depois ; ./temp.sh
+temperatura antes
+CPU temp=50.8'C
+
+stress: info: [830] dispatching hogs: 16 cpu, 4 io, 2 vm, 32 hdd
+stress: info: [830] successful run completed in 185s
+
+temperatura depois
+CPU temp=61.6'C
+```
+
+É, parece que cozinhou legal. Agora vamos pegar o ventilador e ver se registramos a queda de temperatura:
+
+```
+root@raspberrypi:/# echo temperatura antes ; ./temp.sh ; sleep 300  ; echo ; echo temperatura depois ; ./temp.sh
+temperatura antes
+CPU temp=57.3'C
+
+temperatura depois
+CPU temp=49.2'C
+```
+
+Após cinco minutinhos, vemos que a temperatura baixou. Talvez precisemos de um ventilador mais potente, mas já deu pra notar a diferença. Podemos dizer que nosso script de monitoração está mesmo funcionando.
+
+Vamos agora copiar este script para um local mais apropriado. No meu raspberry, costumo colocar meus scripts em /usr/local/sbin:
+
+`mv temp.sh /usr/local/sbin`
+
+## Juntando tudo
+
+Agora vamos juntar todos os comandos que utilizamos em um só, porém com algumas modificações para que fique tudo mais legível:
+
+```
+ while true ; do clear ; iostat -d mmcblk0 -m ; echo ; vmstat -Sm ; echo ; /usr/local/sbin/temp.sh ; echo -n 'Last Undervoltage Message: ' ; dmesg | grep -i voltage | tail -n1 ; echo -e "\n" ; echo 'Most memory consuming proccess: ' ; ps aux --sort=-%mem | head -n2 ; echo ; dmesg | tac | egrep -vi voltage | head -n 15 ; sleep 3 ; done
+```
+
+Tudo isso aí é uma linha só! Garrancheira danada, mas que vai funcionar!
+
+Vamos ver como fica nossa monitoração?
+
+```
+Linux 4.14.98-v7+ (raspberrypi)         12/08/19        _armv7l_        (4 CPU)
+
+Device:            tps    MB_read/s    MB_wrtn/s    MB_read    MB_wrtn
+mmcblk0           1.07         0.00         0.03       2346      16899
+
+
+procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
+ r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st
+ 1  0      0    794     19    120    0    0     1     7    5    4  1  2 97  0  0
+
+CPU temp=45.4'C
+Last Undervoltage Message:
+
+Most memory consuming proccess:
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+pi        5969  0.1  1.6  43804 16544 ?        S    15:10   0:06 /usr/sbin/smbd
+
+[573470.764765] Adding 1023996k swap on /var/swap-02.  Priority:-3 extents:14 across:3284988k SSFS
+[573461.252117] Adding 1023996k swap on /var/swap-01.  Priority:-2 extents:8 across:1417212k SSFS
+[573177.054880] oom_reaper: reaped process 15420 (stress), now anon-rss:0kB, file-rss:0kB, shmem-rss:0kB
+[573176.947260] Killed process 15420 (stress) total-vm:330008kB, anon-rss:313612kB, file-rss:0kB, shmem-rss:0kB
+[573176.947236] Out of memory: Kill process 15420 (stress) score 276 or sacrifice child
+[573176.947230] [15431]     0 15431     1185      225       6       0        4             0 watch
+[573176.947221] [15430]  1000 15430      866       15       6       0        0             0 sleep
+[573176.947211] [15425]  1000 15425      866       15       6       0        0             0 sleep
+[573176.947201] [15421]     0 15421    82502    73850     150       0        0             0 stress
+[573176.947192] [15420]     0 15420    82502    78403     159       0        0             0 stress
+[573176.947182] [15419]     0 15419    82502    77942     158       0        0             0 stress
+[573176.947173] [15418]     0 15418      581       17       5       0        0             0 stress
+[573176.947164] [15412]     0 15412      866       15       6       0        0             0 sleep
+[573176.947153] [12445]     0 12445     1316        2       6       0      117             0 bash
+[573176.947144] [11867]     0 11867     1185      224       7       0        4             0 watch
+```
+
+Note que eu coloquei algumas mensagens utilizando o comando `echo`, além de ter adicionado também um filtro para não mostrar as variações de tensão (`gmesg | egrep -vi voltag `)ao exibir as últimas 15 mensagens do dmesg. Também coloquei uma espera de 3 segundos (`sleep 3`) para que ele repita este mesmo bloco de comandos o tempo todo. Para sair deste *loop*, basta 
+pressionar Control + C.
+
+## Conclusão
+
+Espero que tenham gostado e aprendido mais um pouco com este artigo sobre monitoração. Visite meu repositório de scripts e comandos para o Raspberry e contribua com os seus você também!
+
+Até a próxima.
 
 ---
 `EoF`
