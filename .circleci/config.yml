@@ -6,7 +6,7 @@ jobs:
         environment:
           THEME_URL: "https://github.com/klugjo/hexo-theme-alpha-dust"
           THEME_NAME: "alpha-dust"
-          OLD_PATTERN: "google_analytics: "
+          OLD_PATTERN: "google_analytics:"
           NEW_PATTERN: "google_analytics: UA-154191934-1"
     working_directory: ~/git/blog.hackbox.link
     steps:
@@ -65,7 +65,7 @@ jobs:
           command: git clone $THEME_URL themes/$THEME_NAME
       - run:
           name: Set Google Analytics
-          command: sed -i "s/^$OLD_PATTERN.*/$NEW_PATTERN/g" themes/$THEME_NAME/_config.yml
+          command: sed -i s/^$OLD_PATTERN.*/$NEW_PATTERN/g themes/$THEME_NAME/_config.yml
       - run:
           name: Debug Google Analytics
           command: cat themes/$THEME_NAME/_config.yml
