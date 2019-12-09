@@ -111,12 +111,6 @@ jobs:
           name: Install Google Analytics Script on public dir failsafe
           command: cp -uva google_analytics.ejs public/google-analytics.ejs
       - run:
-          name: Install Google Analytics Script on public/js dir
-          command: cp -uva google_analytics.ejs public/js
-      - run:
-          name: Install Google Analytics Script on public/js dir failsafe
-          command: cp -uva google_analytics.ejs public/js/google-analytics.ejs
-      - run:
           name: Install AWS CLI
           command:  pip install awscli
       - run:
