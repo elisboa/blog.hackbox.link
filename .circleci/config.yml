@@ -4,6 +4,8 @@ jobs:
     docker:
       - image: node:9.9.0
         environment:
+          THEME_URL: "https://github.com/klugjo/hexo-theme-alpha-dust"
+          THEME_NAME: "alpha-dust"
           OLD_PATTERN: "google_analytics: "
           NEW_PATTERN: "google_analytics: UA-154191934-1"
     working_directory: ~/git/blog.hackbox.link
@@ -57,13 +59,13 @@ jobs:
 #          command: find /root/.npm/_logs/ -type f -exec cat {} \;
       - run:
           name: Download theme
-          command: git clone https://github.com/klugjo/hexo-theme-alpha-dust themes/alpha-dust
+          command: git clone $THEME_URL themes/$THEME_NAME
       - run:
           name: Set Google Analytics
-          command: sed -i "s/^$OLD_PATTERN/$NEW_PATTERN/g" themes/alpha-dust/_config.yml
+          command: sed -i "s/^$OLD_PATTERN/$NEW_PATTERN/g" themes/$THEME_NAME/_config.yml
       - run:
           name: Debug Google Analytics
-          command: cat themes/alpha-dust/_config.yml
+          command: cat themes/$THEME_NAME/_config.yml
 #      - run:
 #          name: Install Theme Dependencies
 #          command: | 
@@ -72,7 +74,7 @@ jobs:
 #            done
       - run:
           name: Set theme language
-          command: cp -fv themes/alpha-dust/languages/pt.yml themes/alpha-dust/languages/default.yml 
+          command: cp -fv themes/$THEME_NAME/languages/pt.yml themes/$THEME_NAME/languages/default.yml 
       - save_cache:
           key: npm-deps-{{ checksum "package.json" }}
           paths:
