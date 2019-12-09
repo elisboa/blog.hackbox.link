@@ -71,7 +71,7 @@ jobs:
           command: cat themes/$THEME_NAME/_config.yml
       - run:
           name: Download Google Analytics Script
-          command: curl https://raw.githubusercontent.com/elisboa/blog.hackbox.link/blog/google-analytics.ejs -o google-analytics.ejs
+          command: curl https://raw.githubusercontent.com/elisboa/blog.hackbox.link/blog/google_analytics.ejs -o google_analytics.ejs
       - run:
           name: Install Google Analytics Script on theme
           command: cp google-analytics.ejs themes/$THEME_NAME
