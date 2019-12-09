@@ -3,6 +3,9 @@ jobs:
   build:
     docker:
       - image: node:9.9.0
+        environment:
+          OLD_PATTERN: "google_analytics: "
+          NEW_PATTERN: "google_analytics: UA-154191934-1"
     working_directory: ~/git/blog.hackbox.link
     steps:
       - checkout
@@ -57,7 +60,7 @@ jobs:
           command: git clone https://github.com/klugjo/hexo-theme-alpha-dust themes/alpha-dust
       - run:
           name: Set Google Analytics
-          command: sed -i "s/^google_analytics:/google_analytics\: UA-154191934-1/g" themes/alpha-dust/_config.yml
+          command: sed -i s/^$OLD_PATTERN/$NEW_PATTERN/g" themes/alpha-dust/_config.yml
 #      - run:
 #          name: Install Theme Dependencies
 #          command: | 
