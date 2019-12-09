@@ -4,8 +4,8 @@ jobs:
     docker:
       - image: node:9.9.0
         environment:
-          THEME_URL: "https://github.com/hexojs/hexo-theme-landscape"
-          THEME_NAME: "landscape"
+          THEME_URL: "https://github.com/klugjo/hexo-theme-alpha-dust"
+          THEME_NAME: "alpha-dust"
           OLD_PATTERN: "google_analytics:"
           NEW_PATTERN: "google_analytics: UA-154191934-1"
     working_directory: ~/git/blog.hackbox.link
