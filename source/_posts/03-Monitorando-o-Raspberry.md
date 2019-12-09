@@ -10,7 +10,7 @@ tags: raspberry, shellscript, linux
 
 É muito comum a gente começar a usar o Raspberry Pi sem ter muita noção de como monitorá-lo, saber o que realmente está acontecendo com ele. Este humilde *post* tem como intenção mostrar os comandos mais comuns de monitoração que o Linux oferece e mostrar como podem ser usados para ter uma visibilidade da saúde do seu hardware.
 
-**Aviso: aqui não vamos tratar de ferramentas de monitoração, como Zabbix e Prometheus. A ideia é criar nossa própria rotina de monitoração através da ecução periódica de uma série de comandos que o Linux já oferece**
+**Aviso: aqui não vamos tratar de ferramentas de monitoração, como Zabbix e Prometheus. A ideia é criar nossa própria rotina de monitoração através da execução periódica de uma série de comandos que o Linux já oferece**
 
 **Mais um aviso: todos os comandos deste texto devem ser executados como root. Não recomendo o sudo, pois vamos precisar rodar muitas coisas, editar arquivos, rodar de novo etc. Então é mais fácil iniciar uma sessão como root mesmo**
 
