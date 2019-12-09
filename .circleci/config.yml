@@ -65,7 +65,7 @@ jobs:
           command: git clone $THEME_URL themes/$THEME_NAME
       - run:
           name: Set Google Analytics
-          command: sed -i "s/^$OLD_PATTERN/$NEW_PATTERN/g" themes/$THEME_NAME/_config.yml
+          command: sed -i "s/^$OLD_PATTERN.*/$NEW_PATTERN/g" themes/$THEME_NAME/_config.yml
       - run:
           name: Debug Google Analytics
           command: cat themes/$THEME_NAME/_config.yml
