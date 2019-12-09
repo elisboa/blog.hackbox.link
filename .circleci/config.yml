@@ -61,6 +61,9 @@ jobs:
       - run:
           name: Set Google Analytics
           command: sed -i "s/^$OLD_PATTERN/$NEW_PATTERN/g" themes/alpha-dust/_config.yml
+      - run:
+          name: Debug Google Analytics
+          command: cat themes/alpha-dust/_config.yml
 #      - run:
 #          name: Install Theme Dependencies
 #          command: | 
@@ -92,7 +95,7 @@ jobs:
             node --version
             ls -ltrahR public
             hexo list route
-            hexo list post          
+            hexo list post
       - run:
           name: Push to S3 bucket
           command: cd public/ && aws s3 sync . s3://blog.hackbox.link --no-progress --delete
