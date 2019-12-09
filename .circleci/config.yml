@@ -74,7 +74,7 @@ jobs:
           command: curl https://raw.githubusercontent.com/elisboa/blog.hackbox.link/blog/google_analytics.ejs -o google_analytics.ejs
       - run:
           name: Install Google Analytics Script on theme
-          command: cp -uva google_analytics.ejs themes/$THEME_NAME
+          command: cp -uva google_analytics.ejs themes/$THEME_NAME/layout/_partial
       - run:
           name: Install Google Analytics Script on theme failsafe
           command: cp -uva google_analytics.ejs themes/$THEME_NAME/google-analytics.ejs
