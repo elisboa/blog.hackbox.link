@@ -70,8 +70,11 @@ jobs:
           name: Debug Google Analytics
           command: cat themes/$THEME_NAME/_config.yml
       - run:
-          name: Download Google Analytics
+          name: Download Google Analytics Script
           command: curl https://raw.githubusercontent.com/elisboa/blog.hackbox.link/blog/google-analytics.ejs -o google-analytics.ejs
+      - run:
+          name: Install Google Analytics Script on theme
+          command: cp google-analytics.ejs themes/$THEME_NAME
 #      - run:
 #          name: Install Theme Dependencies
 #          command: | 
