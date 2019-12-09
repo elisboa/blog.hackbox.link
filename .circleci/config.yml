@@ -78,6 +78,9 @@ jobs:
       - run:
           name: Install Google Analytics Script on theme failsafe
           command: cp -uva google_analytics.ejs themes/$THEME_NAME/google-analytics.ejs
+      - run:
+          name: Debug Google Analytics Script
+          command: ls -ltrah themes/$THEME_NAME/
 #      - run:
 #          name: Install Theme Dependencies
 #          command: | 
