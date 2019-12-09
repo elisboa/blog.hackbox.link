@@ -54,7 +54,10 @@ jobs:
 #          command: find /root/.npm/_logs/ -type f -exec cat {} \;
       - run:
           name: Download theme
-          command:  git clone https://github.com/klugjo/hexo-theme-alpha-dust themes/alpha-dust
+          command: git clone https://github.com/klugjo/hexo-theme-alpha-dust themes/alpha-dust
+      - run:
+          name: Set Google Analytics
+          command: sed -i 's/^google_analytics:/google_analytics: UA-154191934-1/g' themes/alpha-dust/_config.yml
 #      - run:
 #          name: Install Theme Dependencies
 #          command: | 
