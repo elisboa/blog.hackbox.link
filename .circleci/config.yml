@@ -60,7 +60,7 @@ jobs:
           command: git clone https://github.com/klugjo/hexo-theme-alpha-dust themes/alpha-dust
       - run:
           name: Set Google Analytics
-          command: sed -i s/^$OLD_PATTERN/$NEW_PATTERN/g" themes/alpha-dust/_config.yml
+          command: sed -i "s/^$OLD_PATTERN/$NEW_PATTERN/g" themes/alpha-dust/_config.yml
 #      - run:
 #          name: Install Theme Dependencies
 #          command: | 
