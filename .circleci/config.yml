@@ -77,6 +77,9 @@ jobs:
           command: cp -uva google_analytics.ejs themes/$THEME_NAME/layout/_partial
       - run:
           name: Install Google Analytics Script on theme failsafe
+          command: cp -uva google_analytics.ejs themes/$THEME_NAME/layout/_partial/google-analytics.ejs
+      - run:
+          name: Install Google Analytics Script on theme failsafe
           command: cp -uva google_analytics.ejs themes/$THEME_NAME/google-analytics.ejs
       - run:
           name: Debug Google Analytics Script
