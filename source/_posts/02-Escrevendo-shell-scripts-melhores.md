@@ -1,7 +1,7 @@
 ---
 title: Escrevendo shell scripts melhores
 date: 2019-07-04 20:01:20
-tags: bash
+tags: bash, shell script
 ---
 
 ### Introdução
@@ -128,5 +128,6 @@ Os parâmetros e opções são obviamente opcionais, mas o sinal de `=` tem que 
 
 Agora pense nos comandos que você sempre digita passando algum parâmetro específico e crie _aliases_ para eles, colocando também no seu arquivo `funcoes.sh`. Agora você já tem seu arquivo customizado para turbinar seu terminal ainda mais. Você vai notar que vai ser muito mais fácil realizar operações mais complexas no terminal, reduzindo-as a _aliases_ ou agrupando comandos em funções. Lembre-se sempre: se você faz uma coisa várias vezes, você pode estar perdendo tempo `; )`
 
-`EOF`
 ---
+
+`EOF`
