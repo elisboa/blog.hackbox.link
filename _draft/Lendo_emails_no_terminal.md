@@ -1,4 +1,6 @@
-﻿E aí, já pensou em deixar sua vida mais produtiva e deixar seu mouse de lado pelo menos um pouco? Que tal usarmos um gerenciador de emails via terminal?
+﻿# Lendo emails no terminal
+
+E aí, já pensou em deixar sua vida mais produtiva e deixar seu mouse de lado pelo menos um pouco? Que tal usarmos um gerenciador de emails via terminal?
 
 Vamos utilizar uma série de ferramentas ao migrarmos para o modo CLI, ou seja, o terminal. Hoje iniciaremos com o gerenciador de emails Mutt.
 
