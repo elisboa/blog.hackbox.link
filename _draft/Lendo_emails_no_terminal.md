@@ -120,6 +120,8 @@ Acesse sua conta do Google e vá em:
 
 [Gerenciar sua conta](https://myaccount.google.com) → Segurança → Acesso a app menos seguro:
 
+![Configuração de acesso à conta do Google](2019-12-27-132628_732x309_scrot.png)
+
 Marque a opção para habilitar e pronto. Se você ainda não tiver rodado o mutt, faça agora:
 
 ```
