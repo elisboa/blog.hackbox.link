@@ -1,0 +1,51 @@
+set editor=vim
+set signature="Eduardo Lisboa"
+set from="eduardo.c.lisboa@gmail.com"
+set realname="Eduardo Lisboa"
+
+set imap_user="eduardo.lisboa@gmail.com"
+set imap_pass="minha senha aqui"
+set smtp_url="smtp://eduardo.c.lisboa@gmail.com@smtp.gmail.com:587/"
+set smtp_pass="minha senha aqui"
+set ssl_starttls=yes
+set ssl_force_tls=yes
+set folder="imaps://imap.gmail.com:993"
+set spoolfile="+INBOX"
+set timeout=1
+
+# Colors
+color normal     white black
+color attachment brightyellow black
+color hdrdefault cyan black
+color indicator  black cyan
+color markers    brightred black
+color quoted     green black
+color signature  cyan black
+color status     brightgreen blue
+color tilde      blue black
+color tree       red black
+color sidebar_new yellow default
+color index     yellow         default  ~N      # New
+color index     yellow         default  ~O      # Old
+color header    yellow         default  "^from"
+color header    brightgreen    default  "^from:"
+color header    green      default  "^to:"
+color header    green      default  "^cc:"
+color header    green      default  "^date:"
+color header    yellow     default  "^newsgroups:"
+color header    yellow     default  "^reply-to:"
+color header    brightcyan default  "^subject:"
+color header    red        default  "^x-spam-rule:"
+color header    yellow     default  "^x-mailer:"
+color header    yellow     default  "^message-id:"
+color header    yellow     default  "^Organization:"
+color header    yellow     default  "^Organisation:"
+color header    yellow     default  "^User-Agent:"
+color header    yellow     default  "^message-id: .*pine"
+color header    yellow     default  "^X-Fnord:"
+color header    yellow     default  "^X-WebTV-Stationery:"
+color header    yellow     default  "^X-Message-Flag:"
+color header    yellow     default  "^X-Spam-Status:"
+color header    yellow     default  "^X-SpamProbe:"
+color header    red        default  "^X-SpamProbe: SPAM"
+color body      yellow     default  "[;:]-[)/(|]"  # colorise smileys

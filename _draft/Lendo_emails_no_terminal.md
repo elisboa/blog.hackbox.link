@@ -28,6 +28,12 @@ No Redhat e derivados (como CentOS e Fedora):
 sudo yum install -y mutt
 ```
 
+No Arch e derivados (Manjaro etc):
+
+```
+sudo pacman -Syu mutt
+```
+
 Após instalado, chegou a hora de configurá-lo. A princípio, ele cria automaticamente em seu `$HOME` o arquivo `.muttrc`. Caso não tenha criado, utilize este comando:
 
 ```
