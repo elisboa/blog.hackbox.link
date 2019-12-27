@@ -1,6 +1,6 @@
 ﻿# Lendo emails no terminal
 
-![Email aberto no mutt][2019-12-27-130742_1366x768_scrot.png]
+![Email aberto no mutt](2019-12-27-130742_1366x768_scrot.png)
 
 ## Introdução
 
@@ -125,6 +125,9 @@ Marque a opção para habilitar e pronto. Se você ainda não tiver rodado o mut
 ```
 mutt
 ```
+
+![Carregando o mutt](2019-12-27-130146_1366x768_scrot.png)
+
 Caso você já tenha rodado o mutt e tenha sido bloqueado, você vai precisar ir em:
 
 [Gerenciar sua conta](https://myaccount.google.com) → segurança → Conectando ao Google → Senha de aplicativo:
