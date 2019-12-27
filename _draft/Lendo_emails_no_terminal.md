@@ -1,51 +1,69 @@
 ﻿# Lendo emails no terminal
 
+## Introdução
+
 E aí, já pensou em deixar sua vida mais produtiva e deixar seu mouse de lado pelo menos um pouco? Que tal usarmos um gerenciador de emails via terminal?
 
-Vamos utilizar uma série de ferramentas ao migrarmos para o modo CLI, ou seja, o terminal. Hoje iniciaremos com o gerenciador de emails Mutt.
+Vamos utilizar uma série de ferramentas ao migrarmos para o modo [CLI](https://pt.wikipedia.org/wiki/Interface_de_linha_de_comandos), ou seja, o terminal. Hoje iniciaremos com o gerenciador de emails mutt.
 
 Você ainda não conhece o mutt? Nacredito! Mas fique calmo ou calma e leia este fantástico manual: http://www.mutt.org/doc/manual
 
-Tá, mas e agora, como fazer essa bagaça funcionar? É fácil! Quase tão simples como voar! Então, vamos lá!
+Tá, mas e agora, como fazer essa bagaça funcionar? Não se deprima, pois é fácil! Quase tão simples como voar! Então, beba aquele café e vamos lá!
 
-Primeiro, instalamos o mutt:
+## Preparando a brincadeira
+
+### Instalação
+
+Primeiro, instalamos o mutt.
 
 No Debian e derivados (como Ubuntu, Mint etc):
 
+```
 sudo apt install -y mutt
+```
 
 No Redhat e derivados (como CentOS e Fedora):
 
+```
 sudo yum install -y mutt
+```
 
-Após instalado, chegou a hora de configurá-lo. A princípio, ele cria automaticamente em seu $HOME o arquivo .muttrc. Caso não tenha criado, utilize este comando:
+Após instalado, chegou a hora de configurá-lo. A princípio, ele cria automaticamente em seu `$HOME` o arquivo `.muttrc`. Caso não tenha criado, utilize este comando:
 
+```
 touch ~/.muttrc
+```
+
+### Configuração inicial
 
 Seguem algumas configurações básicas:
 
+```
 set editor=vim # Aqui setamos nosso editor de preferência
-
 set signature= # Aqui colocaremos a assinatura caso precisamos
-
 set from="meuemail@gmail.com"
 set realname="Meu nome"
+```
 
-# OBS: abaixo temos a configuração do IMAP. O foco aqui não é explicar como ativar isso. Veja o manual do seu provedor de e-mail para instruções de como habilitar e utilizar o IMAP.
+**Abaixo temos a configuração do IMAP. O foco aqui não é explicar como ativar isso. Veja o manual do seu provedor de e-mail para instruções de como habilitar e utilizar o IMAP**
 
+```
 set imap_user="meuemail@gmail.com" #seu email
 set imap_pass="pass" # falaremos mais abaixo sobre a senha para o GMail
-set smtp_url="smtp://meuemail@gmail.com@smtp.gmail.com:587/" # configuração do SMTP do gmail.
+set smtp_url="smtp://meuemail@gmail.com@smtp.gmail.com:587/" # configuração do SMTP do gmail
 set smtp_pass="pass"
-
 set ssl_starttls=yes # Habilitar criptografia para se comunicar com o servidor de e-mail
 set ssl_force_tls=yes # Forçar o uso de criptografia (senão, ele tenta se conectar sem criptografia ao falhar a conexão utilizando criptografia)
-
 set folder="imaps://imap.gmail.com:993" # configuração de IMAP do GMail
 set spoolfile="+INBOX" # no caso estamos personalizando a nossa caixa de entrada
 set timeout=10 # muito importante, pois definimos de quantos em quantos minutos ele vai checar se teremos novos e-mails
+```
 
-# Segue abaixo uma perfumaria opcional
+### Configuração adicional
+
+Segue abaixo uma perfumaria opcional:
+
+```
 # Cores
 color normal     white black
 color attachment brightyellow black
@@ -82,40 +100,27 @@ color header    yellow     default  "^X-Spam-Status:"
 color header    yellow     default  "^X-SpamProbe:"
 color header    red        default  "^X-SpamProbe: SPAM"
 color body      yellow     default  "[;:]-[)/(|]"  # colorise smileys
+```
 
-# Sobre a senha:
+**Você pode baixar o arquivo todo aqui**
 
-Para configurar o GMail no mutt, a senha utilizada no seu e-mail via acesso web normalmente não funciona, pois o Google não conhece o mutt e bloqueia seu uso. A solução para isso é:
+## Acertando os ponteiros
 
-Acesse, via webmail, sua conta e vá em:
+Para configurar o GMail no mutt, a senha utilizada no seu e-mail via acesso web pode não funcionar, pois o Google não conhece o mutt e bloqueia seu uso. A solução para isso é:
 
-Gerenciar sua conta → segurança → Signing in to Google → app password:
+Acesse sua conta do Google e vá em:
 
-Em select app clique em “mail” em select device “other”
+[Gerenciar sua conta](https://myaccount.google.com) → segurança → Acesso a app menos seguro:
 
-Feito isso, ele vai gerar uma senha para você. Sua senha para acesso via webmail continuará a mesma. Guarde essa senha gerada, volte às configurações do mutt e no campo pass coloque ela. Rode o mutt e POW!!! Você está agora recebendo e enviando e-mails pelo terminal.
+Marque a opção para habilitar e pronto. Se você ainda não tiver rodado o mutt, faça agora:
 
+```
+mutt
+```
+Caso você já tenha rodado o mutt e tenha sido bloqueado, você vai precisar ir em:
 
+[Gerenciar sua conta](https://myaccount.google.com) → segurança → Conectando ao Google → Senha de aplicativo:
 
---- esta parte será um artigo a parte
+Em seguida, vá em "Selecionar aplicação", depois em "Selecionar dispositivo" e então em "outro". 
 
-BONUS!!!:
-
-Que tal após receber e enviar e-mail pelo terminal, agora sermos notificados quando chegarem novos emails?
-
-Para isso, vamos instalar o notify-send
-
-No 
-
-  sudo apt install libnotify-bin
-
-Familia Redhat:
-
-  sudo yum install libnotify-bin # faz um tempo que não uso família Redhat se não for assim me desculpe :(
-
-após instalação vamos incluir dentro da config .muttrc a seguinte linha:
-
-
-set new_mail_command="notify-send 'Titulo' 'Mensagem'" e já era!!
-
-caso queira conhecer mais parametro do notify-send segue: https://ss64.com/bash/notify-send.html
+Feito isso, ele vai gerar uma senha para você. Sua senha para acesso via webmail continuará a mesma. Guarde essa senha gerada, volte às configurações do mutt e no campo pass coloque ela. Rode o `mutt` no terminal e POW!!! Você está agora recebendo e enviando e-mails pelo terminal.
