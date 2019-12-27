@@ -1,5 +1,7 @@
 ﻿# Lendo emails no terminal
 
+![Email aberto no mutt][2019-12-27-130742_1366x768_scrot.png]
+
 ## Introdução
 
 E aí, já pensou em deixar sua vida mais produtiva e deixar seu mouse de lado pelo menos um pouco? Que tal usarmos um gerenciador de emails via terminal?
