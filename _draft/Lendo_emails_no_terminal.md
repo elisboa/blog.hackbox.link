@@ -118,7 +118,7 @@ Para configurar o GMail no mutt, a senha utilizada no seu e-mail via acesso web 
 
 Acesse sua conta do Google e vá em:
 
-[Gerenciar sua conta](https://myaccount.google.com) → segurança → Acesso a app menos seguro:
+[Gerenciar sua conta](https://myaccount.google.com) → Segurança → Acesso a app menos seguro:
 
 Marque a opção para habilitar e pronto. Se você ainda não tiver rodado o mutt, faça agora:
 
@@ -135,3 +135,11 @@ Caso você já tenha rodado o mutt e tenha sido bloqueado, você vai precisar ir
 Em seguida, vá em "Selecionar aplicação", depois em "Selecionar dispositivo" e então em "outro". 
 
 Feito isso, ele vai gerar uma senha para você. Sua senha para acesso via webmail continuará a mesma. Guarde essa senha gerada, volte às configurações do mutt e no campo pass coloque ela. Rode o `mutt` no terminal e POW!!! Você está agora recebendo e enviando e-mails pelo terminal.
+
+## Uso básico inicial 
+
+Para utilizar o mutt, você precisa sempre prestar atenção aos atalhos de teclado mostrados na parte superior. Existem muitos outros atalhos exibidos ao se digitar `?`
+
+![Exibindo o help do mutt](2019-12-27-132200_1366x768_scrot.png)
+
+**Dica: no vim, ao responder um e-mail contendo o corpo da mensagem original, utilize a tecla `O` em vez do tradicional `i`. Mas tem que ser o `O` maiúsculo mesmo, não o `o`. Isto vai jogar a linha atual para baixo e criar uma linha nova logo acima. Este é o melhor jeito de se responder e-mails com o corpo da mensagem anterior `;-)`**
