@@ -108,7 +108,7 @@ color header    red        default  "^X-SpamProbe: SPAM"
 color body      yellow     default  "[;:]-[)/(|]"  # colorise smileys
 ```
 
-**Você pode baixar o arquivo todo aqui**
+**Você pode baixar o arquivo todo [aqui](.muttrc)**
 
 ## Acertando os ponteiros
 
