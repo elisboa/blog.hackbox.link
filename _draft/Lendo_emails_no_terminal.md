@@ -112,7 +112,7 @@ color body      yellow     default  "[;:]-[)/(|]"  # colorise smileys
 
 **Você pode baixar o arquivo todo [aqui](.muttrc)**
 
-## Acertando os ponteiros
+## Acertando os ponteiros parte um
 
 Para configurar o GMail no mutt, a senha utilizada no seu e-mail via acesso web pode não funcionar, pois o Google não conhece o mutt e bloqueia seu uso. A solução para isso é:
 
@@ -128,20 +128,35 @@ Marque a opção para habilitar e pronto. Se você ainda não tiver rodado o mut
 mutt
 ```
 
+## Acertando os ponteiros parte dois
+
 ![Carregando o mutt](2019-12-27-130146_1366x768_scrot.png)
 
-Caso você já tenha rodado o mutt e tenha sido bloqueado, você vai precisar ir em:
+Caso você tenha MFA habilitado e/ou o mutt tenha sido bloqueado, você vai precisar ir em [Gerenciar sua conta](https://myaccount.google.com) → segurança:
 
-[Gerenciar sua conta](https://myaccount.google.com) → segurança → Conectando ao Google → Senha de aplicativo:
+![Tela Inicial de configuração de Segurança da conta do Google](WhatsApp_Image_2019-12-27_at_13.45.07.jpg)
 
-Em seguida, vá em "Selecionar aplicação", depois em "Selecionar dispositivo" e então em "outro". 
+Então, vá em Gerenciar sua conta → segurança → Conectando ao Google → Senha de aplicativo:
+![Configuração de segurança da conta do Google](WhatsApp_Image_2019-12-27_at_13.45.24.jpg)
 
-Feito isso, ele vai gerar uma senha para você. Sua senha para acesso via webmail continuará a mesma. Guarde essa senha gerada, volte às configurações do mutt e no campo pass coloque ela. Rode o `mutt` no terminal e POW!!! Você está agora recebendo e enviando e-mails pelo terminal.
+Em seguida, vá em "Selecionar aplicação". Depois em "Selecionar dispositivo" e então em "outro".
+
+![Tela de seleção da aplicação "other" para configuração de senha personalizada](WhatsApp_Image_2019-12-27_at_13.45.59.jpg)
+
+Feito isso, ele vai gerar uma senha para você. Sua senha para acesso via webmail continuará a mesma. 
+
+![Tela exibindo o nome da aplicação Mutt após ter sido configurada](WhatsApp_Image_2019-12-27_at_13.47.14.jpg)
+
+Guarde essa senha gerada, volte às configurações do mutt e no campo pass coloque ela. Rode o `mutt` no terminal e POW!!! Você está agora recebendo e enviando e-mails pelo terminal.
 
 ## Uso básico inicial 
 
 Para utilizar o mutt, você precisa sempre prestar atenção aos atalhos de teclado mostrados na parte superior. Existem muitos outros atalhos exibidos ao se digitar `?`
 
 ![Exibindo o help do mutt](2019-12-27-132200_1366x768_scrot.png)
+
+## Conclusão e observações
+
+Este post foi idealizado e escrito por [Carlos Loyola](https://github.com/cloyol1), um dos nossos parceiros nesse pequeno e humilde blog. Se tiver alguma sugestão ou quiser colaborar, [entre em contato você também](mailto:eduardo.lisboa@gmail.com)!
 
 **Dica: no vim, ao responder um e-mail contendo o corpo da mensagem original, utilize a tecla `O` em vez do tradicional `i`. Mas tem que ser o `O` maiúsculo mesmo, não o `o`. Isto vai jogar a linha atual para baixo e criar uma linha nova logo acima. Este é o melhor jeito de se responder e-mails com o corpo da mensagem anterior `;-)`**
