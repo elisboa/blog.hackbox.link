@@ -127,7 +127,7 @@ Acesse sua conta do Google e vá em:
 
 [Gerenciar sua conta](https://myaccount.google.com) → Segurança → Acesso a app menos seguro:
 
-![Configuração de acesso à conta do Google](/static/2019-12-27-132628_732x309_scrot.png)
+![Configuração de acesso à conta do Google](/_images/2019-12-27-132628_732x309_scrot.png)
 
 Marque a opção para habilitar e pronto. Se você ainda não tiver rodado o mutt, faça agora:
 
@@ -137,22 +137,22 @@ mutt
 
 ## Acertando os ponteiros parte dois
 
-![Carregando o mutt](/static/2019-12-27-130146_1366x768_scrot.png)
+![Carregando o mutt](/_images/2019-12-27-130146_1366x768_scrot.png)
 
 Caso você tenha MFA habilitado e/ou o mutt tenha sido bloqueado, você vai precisar ir em [Gerenciar sua conta](https://myaccount.google.com) → segurança:
 
-![Tela Inicial de configuração de Segurança da conta do Google](/static/WhatsApp_Image_2019-12-27_at_13.45.07.jpg)
+![Tela Inicial de configuração de Segurança da conta do Google](/_images/WhatsApp_Image_2019-12-27_at_13.45.07.jpg)
 
 Então, vá em Gerenciar sua conta → segurança → Conectando ao Google → Senha de aplicativo:
-![Configuração de segurança da conta do Google](/static/WhatsApp_Image_2019-12-27_at_13.45.24.jpg)
+![Configuração de segurança da conta do Google](/_images/WhatsApp_Image_2019-12-27_at_13.45.24.jpg)
 
 Em seguida, vá em "Selecionar aplicação". Depois em "Selecionar dispositivo" e então em "outro".
 
-![Tela de seleção da aplicação "other" para configuração de senha personalizada](/static/WhatsApp_Image_2019-12-27_at_13.45.59.jpg)
+![Tela de seleção da aplicação "other" para configuração de senha personalizada](/_images/WhatsApp_Image_2019-12-27_at_13.45.59.jpg)
 
 Feito isso, ele vai gerar uma senha para você. Sua senha para acesso via webmail continuará a mesma. 
 
-![Tela exibindo o nome da aplicação Mutt após ter sido configurada](/static/WhatsApp_Image_2019-12-27_at_13.47.14.jpg)
+![Tela exibindo o nome da aplicação Mutt após ter sido configurada](/_images/WhatsApp_Image_2019-12-27_at_13.47.14.jpg)
 
 Guarde essa senha gerada, volte às configurações do mutt e no campo pass coloque ela. Rode o `mutt` no terminal e POW!!! Você está agora recebendo e enviando e-mails pelo terminal.
 
@@ -160,7 +160,7 @@ Guarde essa senha gerada, volte às configurações do mutt e no campo pass colo
 
 Para utilizar o mutt, você precisa sempre prestar atenção aos atalhos de teclado mostrados na parte superior. Existem muitos outros atalhos exibidos ao se digitar `?`
 
-![Exibindo o help do mutt](/static/2019-12-27-132200_1366x768_scrot.png)
+![Exibindo o help do mutt](/_images/2019-12-27-132200_1366x768_scrot.png)
 
 ## Conclusão e observações
 
