@@ -4,10 +4,11 @@ date: 2019-12-30 10:00:00
 tags: cli, terminal, mutt
 ---
 
+https://github.com/elisboa/blog.hackbox.link/blob/blog/source/_images/2019-12-27-130146_1366x768_scrot.png?raw=true
 
 # Lendo emails no terminal
 
-![Email aberto no mutt](2019-12-27-130742_1366x768_scrot.png)
+![Email aberto no mutt](https://github.com/elisboa/blog.hackbox.link/blob/blog/source/_images/2019-12-27-130742_1366x768_scrot.png?raw=true)
 
 ## Introdução
 
@@ -127,7 +128,7 @@ Acesse sua conta do Google e vá em:
 
 [Gerenciar sua conta](https://myaccount.google.com) → Segurança → Acesso a app menos seguro:
 
-![Configuração de acesso à conta do Google](/_images/2019-12-27-132628_732x309_scrot.png)
+![Configuração de acesso à conta do Google](https://github.com/elisboa/blog.hackbox.link/blob/blog/source/_images/2019-12-27-132628_732x309_scrot.png?raw=true)
 
 Marque a opção para habilitar e pronto. Se você ainda não tiver rodado o mutt, faça agora:
 
@@ -137,22 +138,22 @@ mutt
 
 ## Acertando os ponteiros parte dois
 
-![Carregando o mutt](/_images/2019-12-27-130146_1366x768_scrot.png)
+![Carregando o mutt](https://github.com/elisboa/blog.hackbox.link/blob/blog/source/_images/2019-12-27-130146_1366x768_scrot.png?raw=true)
 
 Caso você tenha MFA habilitado e/ou o mutt tenha sido bloqueado, você vai precisar ir em [Gerenciar sua conta](https://myaccount.google.com) → segurança:
 
-![Tela Inicial de configuração de Segurança da conta do Google](/_images/WhatsApp_Image_2019-12-27_at_13.45.07.jpg)
+![Tela Inicial de configuração de Segurança da conta do Google](https://github.com/elisboa/blog.hackbox.link/blob/blog/source/_images/WhatsApp_Image_2019-12-27_at_13.45.07.jpg?raw=true)
 
 Então, vá em Gerenciar sua conta → segurança → Conectando ao Google → Senha de aplicativo:
-![Configuração de segurança da conta do Google](/_images/WhatsApp_Image_2019-12-27_at_13.45.24.jpg)
+![Configuração de segurança da conta do Google](https://github.com/elisboa/blog.hackbox.link/blob/blog/source/_images/WhatsApp_Image_2019-12-27_at_13.45.24.jpg?raw=true)
 
 Em seguida, vá em "Selecionar aplicação". Depois em "Selecionar dispositivo" e então em "outro".
 
-![Tela de seleção da aplicação "other" para configuração de senha personalizada](/_images/WhatsApp_Image_2019-12-27_at_13.45.59.jpg)
+![Tela de seleção da aplicação "other" para configuração de senha personalizada](https://github.com/elisboa/blog.hackbox.link/blob/blog/source/_images/WhatsApp_Image_2019-12-27_at_13.45.59.jpg?raw=true)
 
 Feito isso, ele vai gerar uma senha para você. Sua senha para acesso via webmail continuará a mesma. 
 
-![Tela exibindo o nome da aplicação Mutt após ter sido configurada](/_images/WhatsApp_Image_2019-12-27_at_13.47.14.jpg)
+![Tela exibindo o nome da aplicação Mutt após ter sido configurada](https://github.com/elisboa/blog.hackbox.link/blob/blog/source/_images/WhatsApp_Image_2019-12-27_at_13.47.14.jpg?raw=true)
 
 Guarde essa senha gerada, volte às configurações do mutt e no campo pass coloque ela. Rode o `mutt` no terminal e POW!!! Você está agora recebendo e enviando e-mails pelo terminal.
 
@@ -160,7 +161,7 @@ Guarde essa senha gerada, volte às configurações do mutt e no campo pass colo
 
 Para utilizar o mutt, você precisa sempre prestar atenção aos atalhos de teclado mostrados na parte superior. Existem muitos outros atalhos exibidos ao se digitar `?`
 
-![Exibindo o help do mutt](/_images/2019-12-27-132200_1366x768_scrot.png)
+![Exibindo o help do mutt](https://github.com/elisboa/blog.hackbox.link/blob/blog/source/_images/2019-12-27-132200_1366x768_scrot.png?raw=true)
 
 ## Conclusão e observações
 
