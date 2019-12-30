@@ -4,11 +4,12 @@ export THEME_URL="https://github.com/klugjo/hexo-theme-alpha-dust"
 export THEME_NAME="alpha-dust"
 export OLD_PATTERN="google_analytics: "
 export NEW_PATTERN="google_analytics: UA-154191934-1"
-export WORKDIR="~/git/blog.hackbox.link"
+export BLOGDIR="/git/blog.hackbox.link"
 
+ls -ltrah $BLOGDIR
 
 # Creating work dir
-mkdir -pv "$WORKDIR" && cd "$WORKDIR"
+mkdir -pv "$BLOGDIR" && cd "$BLOGDIR"
 
 # Fix Sources List     
 sed -i /jessie-updates/d /etc/apt/sources.list
@@ -62,7 +63,7 @@ npm install --no-shrinkwrap --update-binary
 #find /root/.npm/_logs/ -type f -exec cat {} \;
 
 #Download theme
- git clone $THEME_URL themes/$THEME_NAME
+git clone $THEME_URL themes/$THEME_NAME
 
 #Set Google Analytics
  sed -i "s/^$OLD_PATTERN.*/$NEW_PATTERN/g" themes/$THEME_NAME/_config.yml
@@ -71,7 +72,7 @@ npm install --no-shrinkwrap --update-binary
 cat themes/$THEME_NAME/_config.yml
 
 #Download Google Analytics Script
-curl https://raw.githubusercontent.com/elisboa/blog.hackbox.link/blog/google_analytics.ejs -o google_analytics.ejs
+curl -sL https://raw.githubusercontent.com/elisboa/blog.hackbox.link/blog/google_analytics.ejs -o google_analytics.ejs
 
 #Install Google Analytics Script on theme
 cp -uva google_analytics.ejs themes/$THEME_NAME/layout/_partial
@@ -99,7 +100,6 @@ cp -fv themes/$THEME_NAME/languages/pt.yml themes/$THEME_NAME/languages/default.
 #          command: |
 #            rm -rfv public/*
 
-WORKDIR ~/git/blog.hackbox.link
 
 #Generate static website
 hexo generate
@@ -122,10 +122,9 @@ hexo list route
 hexo list post
 
 #Push to S3 bucket
-WORKDIR ~/git/blog.hackbox.link/public
+cd "$BLOGDIR/public"
 aws s3 sync . s3://blog.hackbox.link --no-progress --delete
 
 #Clean AWS CloudFront cache
 aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DIST_ID --paths /*
-
 
