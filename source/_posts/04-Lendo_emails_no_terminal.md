@@ -168,3 +168,4 @@ Para utilizar o mutt, você precisa sempre prestar atenção aos atalhos de tecl
 Este post foi idealizado e escrito por [Carlos Loyola](https://github.com/cloyol1), um dos nossos parceiros nesse pequeno e humilde blog. Se tiver alguma sugestão ou quiser colaborar, [entre em contato você também](mailto:eduardo.lisboa@gmail.com)!
 
 **Dica: no vim, ao responder um e-mail contendo o corpo da mensagem original, utilize a tecla `O` em vez do tradicional `i`. Mas tem que ser o `O` maiúsculo mesmo, não o `o`. Isto vai jogar a linha atual para baixo e criar uma linha nova logo acima. Este é o melhor jeito de se responder e-mails com o corpo da mensagem anterior `;-)`**
+
