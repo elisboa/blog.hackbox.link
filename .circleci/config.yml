@@ -2,7 +2,8 @@ version: 2
 jobs:
   build:
     docker:
-      - image: node:9.9.0
+#      - image: node:9.9.0
+      - image: elisboa/hexoblog:201912301400
         environment:
           THEME_URL: "https://github.com/klugjo/hexo-theme-alpha-dust"
           THEME_NAME: "alpha-dust"
