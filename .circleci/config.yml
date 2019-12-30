@@ -124,6 +124,7 @@ jobs:
             hexo list route
             hexo list post
             pwd
+            find . -type f -exec grep raw {} \; 
       - run:
           name: Push to S3 bucket
           command: cd public && aws s3 sync . s3://blog.hackbox.link --no-progress --delete
