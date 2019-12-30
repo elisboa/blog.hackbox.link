@@ -4,7 +4,7 @@ export THEME_URL="https://github.com/klugjo/hexo-theme-alpha-dust"
 export THEME_NAME="alpha-dust"
 export OLD_PATTERN="google_analytics: "
 export NEW_PATTERN="google_analytics: UA-154191934-1"
-export BLOGDIR="/git/blog.hackbox.link"
+export BLOGDIR="/root/git/blog.hackbox.link"
 
 ls -ltrah $BLOGDIR
 
