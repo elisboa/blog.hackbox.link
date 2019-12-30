@@ -1,10 +1,10 @@
 #Image source
 from node:9.9.0
 
-ENV BLOGDIR $HOME/git/blog.hackbox.link
+ENV BLOGDIR /git/blog.hackbox.link
 
 #ADD deploy.sh
 COPY . $BLOGDIR
-RUN chmod a+x deploy.sh
-ENTRYPOINT ./deploy.sh
+RUN chmod a+x $BLOGDIR/deploy.sh
+ENTRYPOINT $BLOGDIR/deploy.sh
 
