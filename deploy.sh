@@ -4,12 +4,19 @@ export THEME_URL="https://github.com/klugjo/hexo-theme-alpha-dust"
 export THEME_NAME="alpha-dust"
 export OLD_PATTERN="google_analytics: "
 export NEW_PATTERN="google_analytics: UA-154191934-1"
-export BLOGDIR="/root/git/blog.hackbox.link"
+export BLOGDIR="git/blog.hackbox.link"
+
+if [[ -d /root/$BLOGDIR ]]
+then 
+    export BLOGDIR="/root/$BLOGDIR"
+else
+    # Creating work dir
+    mkdir -v "$BLOGDIR" && git clone https://github.com/elisboa/blog.hackbox.link $BLOGDIR
+fi 
 
 ls -ltrah $BLOGDIR
 
-# Creating work dir
-mkdir -pv "$BLOGDIR" && cd "$BLOGDIR"
+cd "$BLOGDIR" 
 
 # Fix Sources List     
 sed -i /jessie-updates/d /etc/apt/sources.list
