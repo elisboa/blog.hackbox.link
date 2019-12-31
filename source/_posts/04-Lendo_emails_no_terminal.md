@@ -4,8 +4,6 @@ date: 2019-12-30 10:00:00
 tags: cli, terminal, mutt, gmail, imap
 ---
 
-https://github.com/elisboa/blog.hackbox.link/blob/blog/source/_images/2019-12-27-130146_1366x768_scrot.png?raw=true
-
 # Lendo emails no terminal
 
 ![Email aberto no mutt](https://github.com/elisboa/blog.hackbox.link/blob/blog/source/_images/2019-12-27-130742_1366x768_scrot.png?raw=true)
