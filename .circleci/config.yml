@@ -129,4 +129,4 @@ jobs:
           command: cd public && aws s3 sync . s3://blog.hackbox.link --no-progress --delete
       - run:
           name: Clean cache
-          command: aws cloudfront create-invalidation --distribution-id EHKQJRHCFVH2T --paths /*
+          command: aws cloudfront create-invalidation --distribution-id EHKQJRHCFVH2T --paths /\*
