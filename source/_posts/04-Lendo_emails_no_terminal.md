@@ -167,3 +167,8 @@ Este post foi idealizado e escrito por [Carlos Loyola](https://github.com/cloyol
 
 **Dica: no vim, ao responder um e-mail contendo o corpo da mensagem original, utilize a tecla `O` em vez do tradicional `i`. Mas tem que ser o `O` maiúsculo mesmo, não o `o`. Isto vai jogar a linha atual para baixo e criar uma linha nova logo acima. Este é o melhor jeito de se responder e-mails com o corpo da mensagem anterior `;-)`**
 
+Por enquanto é só. Até mais e obrigado pelos peixes!
+
+#`EoF`
+---
+
