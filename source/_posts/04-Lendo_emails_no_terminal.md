@@ -169,6 +169,7 @@ Este post foi idealizado e escrito por [Carlos Loyola](https://github.com/cloyol
 
 Por enquanto é só. Até mais e obrigado pelos peixes!
 
-#`EoF`
+`EoF`
+
 ---
 
