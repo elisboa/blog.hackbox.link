@@ -1,7 +1,7 @@
 ﻿---
 title: Lendo emails no terminal
 date: 2019-12-30 10:00:00
-tags: cli, terminal, mutt
+tags: cli, terminal, mutt, gmail, imap
 ---
 
 https://github.com/elisboa/blog.hackbox.link/blob/blog/source/_images/2019-12-27-130146_1366x768_scrot.png?raw=true
@@ -18,7 +18,7 @@ Vamos utilizar uma série de ferramentas ao migrarmos para o modo [CLI](https://
 
 Você ainda não conhece o mutt? Nacredito! Mas fique calmo ou calma e leia este fantástico manual: http://www.mutt.org/doc/manual
 
-Tá, mas e agora, como fazer essa bagaça funcionar? Não se deprima, pois é fácil! Quase tão simples como voar! Então, beba aquele café e vamos lá!
+Tá legal, mas e agora, como fazer essa bagaça funcionar? Não se deprima, pois é fácil! Quase tão simples como voar! Então, beba aquele café e vamos lá!
 
 ## Preparando a brincadeira
 
@@ -157,7 +157,7 @@ Feito isso, ele vai gerar uma senha para você. Sua senha para acesso via webmai
 
 Guarde essa senha gerada, volte às configurações do mutt e no campo pass coloque ela. Rode o `mutt` no terminal e POW!!! Você está agora recebendo e enviando e-mails pelo terminal.
 
-## Uso básico inicial 
+## Uso básico inicial
 
 Para utilizar o mutt, você precisa sempre prestar atenção aos atalhos de teclado mostrados na parte superior. Existem muitos outros atalhos exibidos ao se digitar `?`
 
