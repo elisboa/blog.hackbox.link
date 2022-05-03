@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="{{blog_locale}}">
+<head>
+  <title>{{blog_title}}</title>
+  <meta charset="UTF-8">
+  
+  <!-- SEO -->
+  <meta name="author" content="{{blog_author}}">
+  <meta property="og:title" content="{{blog_title}}">
+  <meta property="og:type" content="article">
+  <meta property="og:description" content="{{blog_description}}">
+  <meta property="og:site_name" content="{{blog_title}}">
+  <meta name="description" content="{{blog_description}}">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="{{blog_title}}">
+  <meta name="twitter:creator" content="{{blog_author}}">
+  <meta name="twitter:title" content="{{blog_title}}">
+  <meta name="twitter:description" content="{{blog_description}}">
+  <meta name="twitter:image:src" content="{{blog_url}}/card.jpg">
+  <meta property="og:url" content="{{blog_url}}">
+  <meta property="og:image" content="{{blog_url}}"/>
+  <!--  -->
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Content-Language" content="{{blog_locale}}">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="icon" href="./favicon.png">
+  <link href="https://unpkg.com/plume-css@1.0.13/lib/plume-all.css" rel="stylesheet" rel="preload" as="style" media="all" defer>
+  <link rel="stylesheet" href="https://unpkg.com/1post@1.0.3/themes/{{blog_theme}}.css">
+
+  <style>
+    :root {
+      --pm-paragraph-font-size: 1.2em
+    }
+
+    .plume .pm-link, .plume a {
+      font-size: var(--pm-paragraph-font-size);
+    }
+  </style>  
+</head>
+<body class="plume">
+  <div class="pm-container">
+    <h1>{{blog_title}}</h1>
+    <h2 class="pm-text-primary pm-h4">{{blog_description}}</h2>
+    <hr>
+  
+    <!-- Edit as yout want -->
+
+    <h2>Posts</h2>
+
+    {{posts_feed}}
+  </div>
+</body>
+</html>

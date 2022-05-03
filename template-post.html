@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="{{blog_locale}}">
+<head>
+  <title>{{post_title}}</title>
+  <meta charset="UTF-8">
+  
+  <!-- SEO -->
+  <meta name="author" content="{{blog_author}}">
+  <meta property="og:title" content="{{post_title}}">
+  <meta property="og:type" content="article">
+  <meta property="og:description" content="{{post_description}}">
+  <meta property="og:site_name" content="{{blog_title}}">
+  <meta name="description" content="{{post_description}}">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="{{blog_title}}">
+  <meta name="twitter:creator" content="{{blog_author}}">
+  <meta name="twitter:title" content="{{post_title}}">
+  <meta name="twitter:description" content="{{post_description}}">
+  <meta name="twitter:image:src" content="{{blog_url}}/card.jpg">
+  <meta property="og:url" content="{{post_url}}">
+  <meta property="og:image" content="{{blog_url}}"/>
+  <!--  -->
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Content-Language" content="{{blog_locale}}">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="icon" href="../../favicon.png">
+  <link href="https://unpkg.com/plume-css@1.0.13/lib/plume-all.css" rel="stylesheet" rel="preload" as="style" media="all" defer>
+  <link rel="stylesheet" href="https://unpkg.com/1post@1.0.3/themes/{{blog_theme}}.css">
+  <link href="https://unpkg.com/prismjs@1.28.0/themes/{{blog_prism_theme}}.min.css" rel="stylesheet" />
+
+  <style>
+    :root {
+      --pm-paragraph-font-size: 1.2em
+    }
+
+    .plume .pm-link, .plume a {
+      font-size: var(--pm-paragraph-font-size);
+    }
+  </style>  
+</head>
+<body class="plume">
+  <div class="pm-container">
+    <h1>{{post_title}}</h1>
+
+    <p>
+      <a href="../..">← ← ←</a> &nbsp; 
+      {{post_created_at_formated}} | <strong>{{blog_posted_by_hint}}</strong>
+      <a href="{{blog_author_url}}" target="_blank" rel="noreferrer noopener">{{blog_author}}</a>
+    </p>
+
+    <hr>
+
+    {{post}}
+
+  </div>
+
+  <!-- Prism Code Highlighting -->
+  <script src="https://unpkg.com/prismjs@1.28.0/components/prism-core.min.js"></script>
+	<script src="https://unpkg.com/prismjs@1.28.0/plugins/autoloader/prism-autoloader.min.js"></script>
+</body>
+</html>
